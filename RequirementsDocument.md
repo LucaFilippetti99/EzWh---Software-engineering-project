@@ -47,10 +47,19 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 # Stakeholders
 
-
 | Stakeholder name  | Description | 
 | ----------------- |:-----------:|
-|   Stakeholder x..     |             | 
+| Easy Warehouse administrator | Manages the software and is external to the company |
+| Warehouse manager | Manages the warehouse, he manages availability of items and keeps a list of possible suppliers per item. Keeps trace of physical position of items in the warehous and the available space. | 
+| Warehouse worker? |	|
+| Suppliers | Companies that supply items to the warehouse |
+| Quality office | Workers that perform quality control on items |
+| Organizational units | Different of company that can perform orders to the warehouse |
+| Competitors | Other companies that offer the same service |
+| Delivery service | Company department that handles deliveries | 
+| Company Intranet | Company network that allows communication between departments |
+| Payment service (?) | Manages payments to the suppliers |
+
 
 # Context Diagram and interfaces
 
@@ -74,7 +83,6 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 \<Persona is-an-instance-of actor>
 
 \<stories will be formalized later as scenarios in use cases>
-
 
 # Functional and non functional requirements
 
