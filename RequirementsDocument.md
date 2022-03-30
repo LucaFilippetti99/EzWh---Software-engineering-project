@@ -50,14 +50,15 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 | Stakeholder name  | Description | 
 | ----------------- |:-----------:|
 | Easy Warehouse administrator | Manages the software and is external to the company |
-| Warehouse manager | Manages the warehouse, he manages availability of items and keeps a list of possible suppliers per item. Keeps trace of physical position of items in the warehous and the available space. | 
-| Warehouse worker? |	|
+| Warehouse manager | Manages the warehouse, he manages availability of items and keeps a list of possible suppliers per item. Keeps trace of physical position of items in the warehouse and the available space. | 
+| Warehouse Worker | Person who physically moves the items in the warehouse and loads them on the system providing info about the location in the warehouse |
 | Suppliers | Companies that supply items to the warehouse |
 | Quality office | Workers that perform quality control on items |
-| Organizational units | Different of company that can perform orders to the warehouse |
+| Organizational Unit | Different areas of company that can perform orders to the warehouse |
 | Competitors | Other companies that offer the same service |
 | Delivery service | Company department that handles deliveries | 
 | Company Intranet | Company network that allows communication between departments |
+| Web Hosting | Hosting service for the web application |
 | Payment service (?) | Manages payments to the suppliers |
 
 
@@ -75,12 +76,22 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 | Actor | Logical Interface | Physical Interface  |
 | ------------- |:-------------:| -----:|
-|   Actor x..     |  |  |
+|   Software Administrator  | Web GUI (Administration and Configuration Panel) | Screen, Keyboard, Mouse |
+| Warehouse Manager | Web GUI (Warehouse administration and overview) | Screen, Keyboard, Mouse |
+| Warehouse Worker | Web GUI (Warehouse items store) | Screen, Keyboard, Mouse, Bar code reader |
+| Suppliers | Email System | Screen, Keyboard, Mouse |
+| Quality Officer | Web GUI | Screen, Keyboard, Mouse, Bar code reader| 
+| Item | Bar code | Laser Beam |
 
 # Stories and personas
 \<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
 
 \<Persona is-an-instance-of actor>
+Warehouse Manager
+Warehouse Worker
+Supplier (accepts order)
+Supplier (refuses order)
+Quality Officer
 
 \<stories will be formalized later as scenarios in use cases>
 
@@ -111,7 +122,6 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 
 # Use case diagram and use cases
-
 
 ## Use case diagram
 \<define here UML Use case diagram UCD summarizing all use cases, and their relationships>
