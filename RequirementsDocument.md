@@ -86,12 +86,12 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 # Stories and personas
 \<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
 
-\<Persona is-an-instance-of actor>
-Warehouse Manager
-Warehouse Worker
-Supplier (accepts order)
-Supplier (refuses order)
-Quality Officer
+|	Actor	|Story|
+| :-: | :-: |
+|Warehouse Manager| |	|
+|Warehouse Worker |	|
+|Supplier | Dwight is 43 years old and is a salesman at Dunder Mifflin Inc., a paper and packaging supply company. He is a hard worker but he could do much more if only the sales process wasn't so slow and time consuming. He wastes hours and hours on the phone to agree on orders with his customers and for any changes he is forced to call customers again to communicate the changes. But since his customers started using the EZWH software, he conveniently receives supply orders by email and with just one click sends the order directly to the warehouse.  |
+|Quality Officer	|	|
 
 \<stories will be formalized later as scenarios in use cases>
 
@@ -115,10 +115,13 @@ Quality Officer
 
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
 | ------------- |:-------------:| :-----:| -----:|
-|  NFR1     |   |  | |
-|  NFR2     | |  | |
-|  NFR3     | | | |
-| NFRx .. | | | | 
+|  NFR1     | Usability | Application should be used with no specific training for the users | All FR |
+|  NFR2     | Performance | All functions should complete in < 0.5 sec  | All FR |
+|  NFR3		| Reliability | Functions that change availability of items should implement mechanisms for multiple access from different users that don't cause warehouse inconsistency | FR2, FR3, FR4 |
+|  NFR3     | Portability | The application should be accessed by Chrome (version 81 and more recent), and Safari (version 13 and more recent) (this covers around 80% of installed browsers); and from the operating systems where these browsers are available (Android, IoS, Windows, MacOS, Unix). As for devices, the application should be usable on smartphones (portrait) and PCs (landscape). | All FR |
+|  NFR4     | Localisation | Decimal numbers use . (dot) as decimal separator |All FR|
+| NFR5 | Reliability | Warehouse Database needs a periodic backup | All FR |
+
 
 
 # Use case diagram and use cases
