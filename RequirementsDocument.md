@@ -163,6 +163,52 @@ Administrator: //Michele
 #Delete User
 #Manage user's role
 
+### Use case 1, UC1 - Manage users and rights
+
+| Actors Involved        | Administrator |
+| ------------- |:-------------:|
+|  Precondition | EZWH administrator A logged in |
+|  Post condition |  |
+|  Nominal Scenario |  A defines a new user and specifies its role and access rights  |
+|  Variants     | A modifies fields, role or access rights of an existing user |
+
+##### Scenario 1-1
+
+| Scenario |  Create user and define role and rights |
+| ------------- |:-------------:| 
+|  Precondition     | EZWH admin A exists and is logged in |
+|  Post condition     | User X is created |
+| Step#        | Description  |
+|  1    |  A defines the credentials of the new User X |  
+|  2    |  A selects the role and defines the access rights for the new user X |
+|  3    |  A confirms the inserted data |
+
+
+##### Scenario 1-2
+
+| Scenario |  Delete user |
+| ------------- |:-------------:| 
+|  Precondition     | EZWH admin A exists and is logged in |
+|  | User X exists |
+|  Post condition     | User X deleted |
+| Step#        | Description  |
+|  1    |  A selects user X  |
+|  2    |  X deleted from the system |
+
+##### Scenario 1-3
+
+| Scenario |  Modify user data, role and rights |
+| ------------- |:-------------:| 
+|  Precondition     | EZWH admin A exists and is logged in |
+|  | User X exists |
+|  Post condition     | X's data, role and rights updated |
+| Step#        | Description  |
+|  1    |  A selects user X  |
+|  2    |  A modifies user's data and selects a new role and new access rights for X |
+|  3    |  A confirms the inserted data |
+
+
+
 User (Manager/Worker/Quality officer/OU Salesman):
 #Login //Maciej
 Password Recovery
@@ -188,30 +234,50 @@ Worker: //Maciej
 Quality officer
 #Insert quality test result + scenario //Michele
 
+### Use case 8, UC8 - Manage Quality Tests of Items received by Suppliers
+
+| Actors Involved        | Quality Officer, Item, Supplier |
+| ------------- |:-------------:|
+|  Precondition | Quality Officer Q is logged in |
+| | Item X belongs to a received order by Supplier S |
+|  Post condition |  |
+|  Nominal Scenario |  Q performs a quality test on X and sends it to the warehouse  |
+|  Variants     | The quality test is negative and X is rejected and sent back to S |
+
+##### Scenario 8-1
+
+| Scenario |  Quality Test is positive and the Item is accepted |
+| -------------- |:-------------:| 
+|  Precondition     | Quality Officer Q is logged in |
+| | Item X belongs to a received order by Supplier S |
+|  Post condition     | Item X is stocked in the warehouse
+| Step#        | Description  |
+|  1    |  Q randomly (or following a specified algorithm) selects an item X among the items received in the order by S |
+|  2    |  Q performs the quality tests associated to the item X |
+|  3    |  Q reports tests results |
+|  4    |  All tests are passed so X is sent to the warehouse |
+
+##### Scenario 8-2
+
+| Scenario |  Quality Test is negative and the Item is rejected |
+| -------------- |:-------------:| 
+|  Precondition     | Quality Officer Q is logged in |
+| | Item X belongs to a received order by Supplier S |
+|  Post condition     | Item X is returned to the Supplier
+| Step#        | Description  |
+|  1    |  Q randomly (or following a specified algorithm) selects an item X among the items received in the order by S |
+|  2    |  Q performs the quality tests associated to the item X |
+|  3    |  Q reports tests results |
+|  4    |  One or more tests are negative so X is reported to S |
+| 5		| X is sent back to S with the rest result containing the reason of the failure |
+
 ## Use case diagram
 \<define here UML Use case diagram UCD summarizing all use cases, and their relationships>
 
 
 \<next describe here each use case in the UCD>
 
-### Use case 1, UC1
-|				|				|
-| ------------- |:-------------:|
-| Actors Involved        |  Warehouse manager,Supplier |
-|  Precondition     | Requested item is in short supply. Manager has already a list of all possible supplier for this item. Suitable physical space is available |
-|  Post condition     | Order is executed and sent to supplier (email??) |
-|  Nominal Scenario     | The manager of the system create a new order request. He choose a specific supplier from a provided list and enters the fields  |
-|  Variants     | Manager orders an item despite is not in short supply.   |
-|  Exceptions     | Unavailability of physical space in the warehouse. |
 
-### Use case 1, UC1
-| Actors Involved        |  |
-| ------------- |:-------------:| 
-|  Precondition     | \<Boolean expression, must evaluate to true before the UC can start> |
-|  Post condition     | \<Boolean expression, must evaluate to true after UC is finished> |
-|  Nominal Scenario     | \<Textual description of actions executed by the UC> |
-|  Variants     | \<other normal executions> |
-|  Exceptions     | \<exceptions, errors > |
 
 ##### Scenario 1.1 
 
