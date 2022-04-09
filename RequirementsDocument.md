@@ -437,18 +437,15 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 # Glossary
 
-\<use UML class diagram to define important terms, or concepts in the domain of the system, and their relationships> 
-
-\<concepts are used consistently all over the document, ex in use cases, requirements etc>
+![Getting Started](./Glossary.jpg)
 
 # System Design
-\<describe here system design>
-
-\<must be consistent with Context diagram>
+![Getting Started](./SystemDesign.jpg)
 
 # Deployment Diagram 
 
-\<describe here deployment diagram >
+![Getting Started](./DeploymentDiagram.jpg)
+
 
 
 
