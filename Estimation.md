@@ -43,7 +43,7 @@ Report here the results of the three estimation approaches. The  estimates may d
 |             | Estimated effort                        |   Estimated duration |          
 | ----------- | ------------------------------- | ---------------|
 | estimate by size | 5000 person hours |31 weeks|
-| estimate by product decomposition | 3800 person hours|24|
+| estimate by product decomposition | 3800 person hours|24 weeks|
 | estimate by activity decomposition |?|?|
 
 
