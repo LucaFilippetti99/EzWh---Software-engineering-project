@@ -49,11 +49,11 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 | Stakeholder name  | Description | 
 | ----------------- |:-----------:|
-| Easy Warehouse administrator | Manages the software and is external to the company |
+| EZWarehouse administrator | Manages the software and is external to the company |
 | Warehouse manager | Manages the warehouse, he manages availability of items and keeps a list of possible suppliers per item. Keeps trace of physical position of items in the warehouse and the available space. | 
 | Warehouse Worker | Person who physically moves the items in the warehouse and loads them on the system providing info about the location in the warehouse |
 | Suppliers | Companies that supply items to the warehouse |
-| Quality office | Workers that perform quality control on items |
+| Quality tester | Worker that performs quality control on items |
 | Organizational Unit Salesman | Salesmen belonging to different areas of company that can perform orders to the warehouse |
 | Competitors | Other companies that offer the same service |
 | Delivery Service | Company department that handles deliveries | 
@@ -72,22 +72,29 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 | Actor | Logical Interface | Physical Interface  |
 | ------------- |:-------------:| -----:|
-|   Software Administrator  | Web GUI (Administration and Configuration Panel) | Screen, Keyboard, Mouse |
+| EZWarehouse Administrator  | Web GUI (Administration and Configuration Panel) | Screen, Keyboard, Mouse |
 | Warehouse Manager | Web GUI (Warehouse administration and overview) | Screen, Keyboard, Mouse |
-| Warehouse Worker | Web GUI (Warehouse items store) | Screen, Keyboard, Mouse, Bar code reader |
+| Warehouse Worker | Mobile application | Mobile device, Bar code reader |
 | Suppliers | Email System | Screen, Keyboard, Mouse |
-| Quality Officer | Web GUI | Screen, Keyboard, Mouse, Bar code reader| 
+| Quality tester | Web GUI | Screen, Keyboard, Mouse, Bar code reader| 
 | Organizational Unit Salesman | Web GUI | Screen, Keyboard, Mouse| 
 | Item | Bar code | Laser Beam |
+| Payment service | Bank system | Screen, Keyboard, Mouse |
+
+
 
 # Stories and personas
 
 |	Actor	|Story|
 | :-: | :-: |
-|Warehouse Manager| Steven is 42 and work as a manager for a medium company. He is bordened of work and every day he has to face different problems. Because of his huge responsibilities he sometimes can’t sleep at night. But after his company started using the Easy Warehouse software Steven had time back for himself.	|
-|Warehouse Worker |	Michael is 40 years old and works as the move-that-heavy-box-over-there guy at a warehouse. He hates this job. His back aches more and more each day and it pays little to nothing, but he has to put food on the table for his two kids and that's the only thing that keeps him going. Recently his boss, that a-hole Steven, introduced some sort of software to manage the warehouse, which is nice. Now Michael bippity-boppities his boxes with that laser-pistol thingy and the system automatically keeps track of them. He's happier now as he doesn't need to report and see Steven's ugly face that often, and if he screws something up, he can always blame it on the software.|
+|Warehouse Manager| Michael is 42 and work as a manager for a medium company. He is bordened of work and every day he has to face different problems. Because of his huge responsibilities he sometimes can’t sleep at night. But after his company started using the Easy Warehouse software Michael had time back for himself.	|
+|Warehouse Worker |	Darryl is 40 years old and works as the move-that-heavy-box-over-there guy at a warehouse.
+He hates this job. His back aches more and more each day and it pays little to nothing, but he has to put food on the table for his two kids and that's the only thing that keeps him going. 
+Recently his boss, Michael, introduced some sort of software to manage the warehouse, which is nice. 
+Now Darryl bippity-boppities his boxes with that laser-pistol-smartphone thingy and the system automatically keeps track of them.
+He's happier now as he doesn't need to report and see Michael's face that often, and if he screws something up, he can always blame it on the software.|
 |Supplier | Dwight is 43 years old and is a salesman at Dunder Mifflin Inc., a paper and packaging supply company. He is a hard worker but he could do much more if only the sales process wasn't so slow and time consuming. He wastes hours and hours on the phone to agree on orders with his customers and for any changes he is forced to call customers again to communicate the changes. But since his customers started using the EZWH software, he conveniently receives supply orders by email and with just one click sends the order directly to the warehouse.  |
-|Quality Officer	| Peter is 48 and works in the quality office of a warehouse. He loves this work and he is really involved in this. He is responsible in verifying that items received by the warehouse achieve strict quality parameter. Peter is really accurate and careful in this job and spends almost all of his attention to check each single item with different instruments. For this reason he is not interested in waste a lot of time in directly update on the pc specific test failures and acceptance of each item. When he has the result of quality tests, he wants to quickly report these in order to make warehouse workers able to physically manage items just checked.	|
+|Quality Tester| Creed is 48 and works in the quality office of a warehouse. He loves this work and he is really involved in this. He is responsible in verifying that items received by the warehouse achieve strict quality parameter. Creed is really accurate and careful in this job and spends almost all of his attention to check each single item with different instruments. For this reason he is not interested in waste a lot of time in directly update on the pc specific test failures and acceptance of each item. When he has the result of quality tests, he wants to quickly report these in order to make warehouse workers able to physically manage items just checked.	|
 |Organizational Unit Salesman	| TODO |
 
 # Functional and non functional requirements
@@ -160,9 +167,9 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 ## Use case 1, UC1 - Manage users and rights
 
-| Actors Involved        | Administrator |
+| Actors Involved        | EZWarehouse Administrator |
 | ------------- |:-------------:|
-|  Precondition | EZWH administrator A logged in |
+|  Precondition | EZWarehouse administrator A logged in |
 |  Post condition |  |
 |  Nominal Scenario |  A defines a new user and specifies its role and access rights  |
 |  Variants     | A modifies fields, role or access rights of an existing user |
@@ -171,7 +178,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 | Scenario |  Create user and define role and rights |
 | ------------- |:-------------:| 
-|  Precondition     | EZWH admin A exists and is logged in |
+|  Precondition     | EZWarehouse administrator A exists and is logged in |
 |  Post condition     | User X is created |
 | Step#        | Description  |
 |  1    |  A defines the credentials of the new User X |  
@@ -183,7 +190,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 | Scenario |  Delete user |
 | ------------- |:-------------:| 
-|  Precondition     | EZWH admin A exists and is logged in |
+|  Precondition     | EZWarehouse administrator A exists and is logged in |
 |  | User X exists |
 |  Post condition     | User X deleted |
 | Step#        | Description  |
@@ -194,7 +201,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 | Scenario |  Modify user data, role and rights |
 | ------------- |:-------------:| 
-|  Precondition     | EZWH admin A exists and is logged in |
+|  Precondition     | EZWarehouse administrator A exists and is logged in |
 |  | User X exists |
 |  Post condition     | X's data, role and rights updated |
 | Step#        | Description  |
@@ -203,106 +210,106 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  3    |  A confirms the inserted data |
 
 ## Use case 2, UC2 - Define position of new item
-| Actors involved | Worker |
+| Actors involved | Warehouse worker |
 | ------------- |:-------------:|
-| Precondition | Worker has items to store |
-| | Worker W is logged into the system | 
+| Precondition | Warehouse worker W has items to store |
+| | W is logged into the system | 
 | | The warehouse has sufficient storage space | 
 | Post condition | The system records item's storage space |
-| Nominal scenario | Worker assigns a storage space to an item |
+| Nominal scenario | W assigns a storage space to an item |
 | Variants | Update position of item in the warehouse | 
 
 ##### Scenario 2.1
-| Scenario | Worker stores item successfully |
+| Scenario | Warehouse worker stores item successfully |
 | ------------- |:-------------:|
-| Precondition | Worker has items to store | 
-| | Worker W is logged into the system | 
+| Precondition | Warehouse worker W has items to store | 
+| | W is logged into the system | 
 | | The warehouse has sufficient storage space |
 | Post condition | The system records item's storage space |
 | Step | Description |
-| 1 | The Worker provides to the system the id of the item being managed |
-| 2 | The Worker provides to the system the id of the storage space to be assigned |
-| 3 | The system informs the worker that the item can be stored and that the position has been recorded |
-| 4 | The worker stores the item in the storage space |
+| 1 | W provides to the system the id of the item being managed |
+| 2 | W provides to the system the id of the storage space to be assigned |
+| 3 | The system informs W that the item can be stored and that the position has been recorded |
+| 4 | W stores the item in the storage space |
 
 ##### Scenario 2.2
-| Scenario | Worker can't store item |
+| Scenario | Warehouse worker can't store item |
 | ------------- |:-------------:|
-| Precondition | Worker has items to store |
-| | Worker W is logged into the system |  
+| Precondition | Warehouse worker W has items to store |
+| | W is logged into the system |  
 | | The warehouse has sufficient storage space |
 | Post condition | The system records item's storage space |
 | Step | Description |
-| 1 | The Worker provides to the system the id of the item being managed |
-| 2 | The Worker provides to the system the id of the storage space to be assigned |
-| 3 | The system informs the worker that the item can't be stored in that space |
-| 4 | The system informs the worker why the item can't be stored in that space |
+| 1 | W provides to the system the id of the item being managed |
+| 2 | W provides to the system the id of the storage space to be assigned |
+| 3 | The system informs W that the item can't be stored in that space |
+| 4 | The system informs W why the item can't be stored in that space |
 
 ## Use case 3, UC3 - Search an item in the warehouse
-| Actors involved | Worker |
+| Actors involved | Warehouse worker |
 | ------------- |:-------------:|
 | Precondition | An item is stored in the warehouse |
-| | Worker W is logged into the system | 
-| Post condition | The worker knows the position of the item | 
-| Nominal scenario | Worker queries the EzWh system with item's identifying data and receives its position in return |
+| | Warehouse worker W is logged into the system | 
+| Post condition | W knows the position of the item | 
+| Nominal scenario | W queries the EzWarehouse system with item's identifying data and receives its position in return |
 
 ##### Scenario 3.1
-| Scenario | Worker finds item in the warehouse |
+| Scenario | Warehouse worker finds item in the warehouse |
 | ------------- |:-------------:|
 | Precondition | The item is stored in the warehouse |
-| | Worker W is logged into the system | 
-| Post condition | Worker knows the exact storage space of an item |
+| | W  is logged into the system | 
+| Post condition | W knows the exact storage space of an item |
 | Step | Description |
-| 1 | The Worker provides to the system identifying information of an item |
-| 2 | The EzWh system serches in the database for the item |
-| 3 | The EzWh system provides information about the location of the searched item |
+| 1 |  W provides to the system identifying information of an item |
+| 2 |  EZWarehouse system serches in the database for the item |
+| 3 |  EZWarehouse system provides information about the location of the searched item |
 
 
 ##### Scenario 3.2
-| Scenario | Worker doesn't find item in the warehouse |
+| Scenario | Warehouse worker doesn't find item in the warehouse |
 | ------------- |:-------------:|
-| Precondition | Worker W is logged into the system | 	|
-| Post condition | Worker knows that there's no item in the warehouse that matches the query |
+| Precondition |  W is logged into the system | 	|
+| Post condition | W knows that there's no item in the warehouse that matches the query |
 | Step | Description |
-| 1 | The Worker provides to the system identifying information of an item |
-| 2 | The EzWh system serches in the database for the item |
-| 3 | The EzWh system doesn't find the item and informs the worker that there's no such item in the warehouse. |
+| 1 |  W provides to the system identifying information of an item |
+| 2 | The EZWarehouse system searches in the database for the item |
+| 3 | The EZWarehouse system doesn't find the item and informs  W that there's no such item in the warehouse. |
 
 ## Use case 4 - Login
 | Actors Involved   | User |
 | ------------- |:-------------:|
-|  Precondition | User's account exists |
-|  Post condition | User has access to his account |
-|  Nominal Scenario | User identifies to the system |
+|  Precondition | User X's account exists |
+|  Post condition | X has access to his account |
+|  Nominal Scenario | X identifies to the system |
 |  Variants     | Identification data don't match an existing account |
 
 ##### Scenario 4.1
 |   Scenario    |   Login is performed correctly    |
 | ------------- |:-------------:|
-|   Precondition | User account exists |
-|   Postcondition | User is logged in |
+|   Precondition | User X account exists |
+|   Postcondition | X is logged in |
 | Step | Description |
-| 1 | User enters the login interface |
-| 2 | User provides the requested identification data |
+| 1 | X enters the login interface |
+| 2 | X provides the requested identification data |
 | 3 | The system checks the provided identification data |
-| 4 | The user has access to his account |
+| 4 | X has access to his account |
 
 ##### Scenario 4.2
 | Scenario | Login is performed incorrectly |
 | ------------- |:-------------:|
-| Precondition | User doesn't have correct login data |
-| Postcondition| User can't access the system |
+| Precondition | User X doesn't have correct login data |
+| Postcondition| X can't access the system |
 | Step | Description |
-| 1 | User enters the login interface |
-| 2 | User provides the requested login data |
+| 1 | X enters the login interface |
+| 2 | X provides the requested login data |
 | 3 | The system checks the provided login |
-| 4 | The system informs the user that the data provided don't match any existing account |
+| 4 | The system informs  X that the data provided don't match any existing account |
 
 ## Use case 5, UC5 - Process a new internal order
-| Actors Involved  | Warehouse manager, Worker |
+| Actors Involved  | Warehouse manager, Warehouse worker |
 | ------------- |:-------------:| 
 |  Precondition     | Warehouse has already received the internal order request |
-|    | Manager M is logged in |
+|    | Warehouse manager M is logged in |
 |    | Items are available|
 |    | Items position is defined |
 |    | Items destination is defined |
@@ -314,62 +321,62 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 ##### Scenario 5.1 
 | Scenario |  Create a shipping label for delivery service |
 | ------------- |:-------------:| 
-|  Precondition     | Manager account exists and is logged in |
+|  Precondition     | Warehouse manager M account exists and is logged in |
 |  Precondition     | Warehouse has already received the internal order request |
 |    | Items position is defined  |
 |    | Items destination is defined  |
 |  Post condition     | A shipping label is generated with the information about the destination of the internal order |
 | Step#        | Description  |
-|  1  |  Manager enters shipping address of the order |
-|  2    |  Manager confirms the entered data |
+|  1  |  M enters shipping address of the order |
+|  2    |  M confirms the entered data |
 
 ##### Scenario 5.2  
 | Scenario |  Reject the order |
 | ------------- |:-------------:| 
-|  Precondition     | Manager account exists and is logged in |
+|  Precondition     | Warehouse manager M account exists and is logged in |
 |      | Warehouse has already received the internal order request |
-|  Post condition     | Manager notifies to the OU salesman that requested items are unavailable|
+|  Post condition     | M notifies to the OU salesman that requested items are unavailable|
 | Step#        | Description  |
-|  1  |  Manager checks the requests |
+|  1  |  M checks the requests |
 |  2  | One or more of the requested items are unavailable
-|  3  |  Manager sends a notification to the salesman about the unavailability of items |
+|  3  |  M sends a notification to the salesman about the unavailability of items |
 
 ## Use case 6, UC6 - Submit a new external order to a Supplier 
 | Actors Involved        | Warehouse Manager, Supplier |
 | ------------- |:-------------:| 
 |  Precondition  | One or more items in the warehouse are in short supply |
-|  Post condition | Order is executed and the warehouse manager pays the supplier |
-|  Nominal Scenario | The warehouse manager creates a new order request. He compiles the different fields and sends the request to supplier |
+|  Post condition | Order is executed and the warehouse manager pays the supplier S |
+|  Nominal Scenario | The Warehouse manager creates a new order request. He compiles the different fields and sends the request to S |
 |  Exceptions    | Unavailability of physical space in the warehouse |
 
 ##### Scenario 6.1
 | Scenario 6.1 | Create a new order |
 | ------------- |:-------------:| 
-|Precondition | Manager M is logged in | 
+|Precondition | Warehouse manager M is logged in | 
 | | One or more items in the warehouse are in short supply |
 |Postcondition | The supplier receives the order |
 |Step#   |Description|
-|1    | Manager selects the items for a new order request |
-|2    | Manager selects one of the possible supplier from the list |
+|1    | M selects the items for a new order request |
+|2    | M selects one of the possible supplier from the list |
 |3	  | Supplier receives the order and accepts it	 
-|4 	  | Manager processes the payment of the order
+|4 	  | M processes the payment of the order
 |5    | Status of the order changes to "Processing" ?
 
 ## Use case 7, Manage suppliers
 | Actors Involved | Warehouse manager |
 | ------------- |:-------------:| 
-|  Precondition  | Manager is logged in |
+|  Precondition  | Warehouse manager M is logged in |
 |  Post condition | The list of suppliers is updated |
-|  Nominal Scenario | The warehouse manager inserts a new supplier (if not existing) in the software system. The manager also inserts some specific information about the supplier |
-|  Variants     | Manager deletes supplier X from the list of suppliers|
-|        | Manager edits some information about supplier X|
+|  Nominal Scenario | M inserts a new supplier (if not existing) in the software system. M also inserts some specific information about the supplier |
+|  Variants     | M deletes supplier X from the list of suppliers|
+|        | M edits some information about supplier X|
 
 ##### Scenario 7.1
 | Scenario 7.1 |Insert a new supplier |
 | ------------- |:-------------:| 
-|Precondition | Supplier X is not on the list of suppliers | 
-|  | Manager is logged in |
-|Postcondition | Supplier X is added to the list of suppliers|
+|Precondition | Supplier S is not on the list of suppliers | 
+|  | Warehouse manager is logged in |
+|Postcondition |  S is added to the list of suppliers|
 |Step#   |Description|
 |1    | A supplier is chosen by the manager and added to the list of suppliers, along with additional information |
 |2    | The changes are saved by the software |
@@ -377,58 +384,58 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 ##### Scenario 7.2
 | Scenario 7.2 | Delete a supplier |
 | ------------- |:-------------:| 
-|Precondition | Supplier X is on the list of suppliers | 
-|  | Manager is logged in |
-|Postcondition | Supplier X is removed from the list of suppliers |
+|Precondition | Supplier S is on the list of suppliers | 
+|  | Warehouse manager M is logged in |
+|Postcondition | Supplier S is removed from the list of suppliers |
 |Step#   |Description|
-|1	    | Manager selects the supplier that he wants to delete |
+|1	    | M selects the supplier that he wants to delete |
 |2    | The software checks that there are no incoming deliveries from that supplier |
 |3    | The changes are saved by the software |
 
 ## Use case 8, UC8 - Manage Quality Tests of Items received by Suppliers
 
-| Actors Involved        | Quality Officer, Supplier |
+| Actors Involved        | Quality Tester, Supplier |
 | ------------- |:-------------:|
-|  Precondition | Quality Officer Q is logged in |
-| | Item X belongs to a received order by Supplier S |
+|  Precondition | Quality Tester Q is logged in |
+| | Item I belongs to a received order by Supplier S |
 |  Post condition |  |
-|  Nominal Scenario |  Q performs a quality test on X and sends it to the warehouse  |
-|  Variants     | The quality test is negative and X is rejected and sent back to S |
+|  Nominal Scenario |  Q performs a quality test on I and sends it to the warehouse  |
+|  Variants     | The quality test is negative and I is rejected and sent back to S |
 
 ##### Scenario 8.1
 
 | Scenario |  Quality Test is positive and the Item is accepted |
 | -------------- |:-------------:| 
-|  Precondition     | Quality Officer Q is logged in |
-| | Item X belongs to a received order by Supplier S |
-|  Post condition     | Item X is stocked in the warehouse
+|  Precondition     | Quality Tester Q is logged in |
+| | Item I belongs to a received order by Supplier S |
+|  Post condition     | Item I is stocked in the warehouse
 | Step#        | Description  |
-|  1    |  Q randomly (or following a specified algorithm) selects one or more items X among the items received in the order by S |
-|  2    |  Q performs the quality tests associated to the item X |
+|  1    |  Q randomly (or following a specified algorithm) selects one or more items I among the items received in the order by S |
+|  2    |  Q performs the quality tests associated to the item I |
 |  3    |  Q reports tests results |
-|  4    |  All tests are passed so X is sent to the warehouse |
+|  4    |  All tests are passed so I is sent to the warehouse |
 
 ##### Scenario 8.2
 
 | Scenario |  Quality Test is negative and the Item is rejected |
 | -------------- |:-------------:| 
-|  Precondition     | Quality Officer Q is logged in |
+|  Precondition     | Quality Tester Q is logged in |
 | | Item X belongs to a received order by Supplier S |
-|  Post condition     | Item X is returned to the Supplier
+|  Post condition     | Item I is returned to the S
 | Step#        | Description  |
-|  1    |  Q randomly (or following a specified algorithm) selects one or more items X among the items received in the order by S |
-|  2    |  Q performs the quality tests associated to the item X |
+|  1    |  Q randomly (or following a specified algorithm) selects one or more items I among the items received in the order by S |
+|  2    |  Q performs the quality tests associated to the item I |
 |  3    |  Q reports tests results |
 |  4    |  One or more tests are negative |
-| 5		| X is sent back to S with the test result containing the reason of the failure |
+| 5		| I is sent back to S with the test result containing the reason of the failure |
 
 ## Use case 9, UC9 - Submit an internal order to the warehouse
 | Actors Involved  | Organizational unit salesman, Warehouse manager |
 | ------------- |:-------------:| 
-|  Precondition     | Salesman account already exists and is logged in |
-|  Post condition     | Internal order is sent to the warehouse manager |
-|  Nominal Scenario     | Internal orders are created by the salesman of an organizational unit of the company. He defines items needed and specify the delivery information |
-|  Variants     | Order has already been created, salesman needs to change delivery information |
+|  Precondition     | Salesman SM account already exists and is logged in |
+|  Post condition     | Internal order is sent to the Warehouse manager |
+|  Nominal Scenario     | Internal orders are created by SM of an organizational unit of the company. He defines items needed and specify the delivery information |
+|  Variants     | Order has already been created, SM needs to change delivery information |
 |  Exceptions  | Requested items are not available |
 |    | Warehouse manager rejects the order|
 
