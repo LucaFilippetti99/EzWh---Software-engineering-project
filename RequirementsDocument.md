@@ -81,7 +81,6 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 | Item | Bar code | Laser Beam |
 
 # Stories and personas
-\<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
 
 |	Actor	|Story|
 | :-: | :-: |
