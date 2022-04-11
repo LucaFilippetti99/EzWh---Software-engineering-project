@@ -65,7 +65,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 # Context Diagram and interfaces
 
 ## Context Diagram
-![Getting Started](./ContextDiagram.jpg)
+![Context Diagram](./media/diagrams/ContextDiagram.jpg)
 
 
 ## Interfaces
@@ -155,7 +155,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 # Use case diagram and use cases
 
-![Getting Started](./UseCaseDiagram.jpg)
+![Getting Started](./media/diagrams/UseCaseDiagram.jpg)
 
 
 ## Use case 1, UC1 - Manage users and rights
@@ -334,7 +334,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  2  | One or more of the requested items are unavailable
 |  3  |  Manager sends a notification to the salesman about the unavailability of items |
 
-## Use case 6, UC6 - Manage orders
+## Use case 6, UC6 - Submit a new external order to a Supplier 
 | Actors Involved        | Warehouse Manager, Supplier |
 | ------------- |:-------------:| 
 |  Precondition  | One or more items in the warehouse are in short supply |
@@ -435,14 +435,14 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 # Glossary
 
-![Getting Started](./Glossary.jpg)
+![Glossary](./media/diagrams/Glossary.jpg)
 
 # System Design
-![Getting Started](./SystemDesign.jpg)
+![System Design](./media/diagrams/SystemDesign.jpg)
 
 # Deployment Diagram 
 
-![Getting Started](./DeploymentDiagram.jpg)
+![Deployment Diagram](./media/diagrams/DeploymentDiagram.jpg)
 
 
 
