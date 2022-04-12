@@ -3,12 +3,23 @@
 
 Date: 22 march 2022
 
-Version: 0.0
+Version: 1.1
 
  
 | Version number | Change |
 | ----------------- |:-----------|
-| | | 
+| 0.1| added stakeholders, context diagram and interfaces| 
+| 0.2| added stories and personas, functional requirement | 
+| 0.3| updated functional requirement, added non functional requirement| 
+| 0.4| added use case diagram and use cases| 
+| 0.5| revised use cases and added scenarios| 
+| 0.6| updated scenarios| 
+| 0.7| added system design | 
+| 0.8| added glossary| 
+| 0.9| added deployment diagram| 
+| 1.0| review all the document| 
+| 1.1| updated previous issues| 
+
 
 
 # Contents
@@ -88,11 +99,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |	Actor	|Story|
 | :-: | :-: |
 |Warehouse Manager| Michael is 42 and work as a manager for a medium company. He is bordened of work and every day he has to face different problems. Because of his huge responsibilities he sometimes can’t sleep at night. But after his company started using the Easy Warehouse software Michael had time back for himself.	|
-|Warehouse Worker |	Darryl is 40 years old and works as the move-that-heavy-box-over-there guy at a warehouse.
-He hates this job. His back aches more and more each day and it pays little to nothing, but he has to put food on the table for his two kids and that's the only thing that keeps him going. 
-Recently his boss, Michael, introduced some sort of software to manage the warehouse, which is nice. 
-Now Darryl bippity-boppities his boxes with that laser-pistol-smartphone thingy and the system automatically keeps track of them.
-He's happier now as he doesn't need to report and see Michael's face that often, and if he screws something up, he can always blame it on the software.|
+|Warehouse Worker |	Darryl is 40 years old and works as the move-that-heavy-box-over-there guy at a warehouse. He hates this job. His back aches more and more each day and it pays little to nothing, but he has to put food on the table for his two kids and that's the only thing that keeps him going. Recently his boss, Michael, introduced some sort of software to manage the warehouse, which is nice. Now Darryl bippity-boppities his boxes with that laser-pistol-smartphone thingy and the system automatically keeps track of them. He's happier now as he doesn't need to report and see Michael's face that often, and if he screws something up, he can always blame it on the software.|
 |Supplier | Dwight is 43 years old and is a salesman at Dunder Mifflin Inc., a paper and packaging supply company. He is a hard worker but he could do much more if only the sales process wasn't so slow and time consuming. He wastes hours and hours on the phone to agree on orders with his customers and for any changes he is forced to call customers again to communicate the changes. But since his customers started using the EZWH software, he conveniently receives supply orders by email and with just one click sends the order directly to the warehouse.  |
 |Quality Tester| Creed is 48 and works in the quality office of a warehouse. He loves this work and he is really involved in this. He is responsible in verifying that items received by the warehouse achieve strict quality parameter. Creed is really accurate and careful in this job and spends almost all of his attention to check each single item with different instruments. For this reason he is not interested in waste a lot of time in directly update on the pc specific test failures and acceptance of each item. When he has the result of quality tests, he wants to quickly report these in order to make warehouse workers able to physically manage items just checked.	|
 |Organizational Unit Salesman	| TODO |
