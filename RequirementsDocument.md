@@ -158,7 +158,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 ### Access right, actor vs function
 
-| Function | EZWarehouse Adminstrator | Warehouse manager | Quality tester | Worker | Organizational unit salesman |
+| Function | EZWarehouse Administrator | Warehouse manager | Quality tester | Worker | Organizational unit salesman |
 | ------------- |:-------------|--|--|--|--|
 | FR1| Yes |No |No |No |No |
 | FR2| Yes |No |No |No |No |
