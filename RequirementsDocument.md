@@ -36,8 +36,7 @@ Version: 1.1
 	+ [Non functional requirements](#non-functional-requirements)
 - [Use case diagram and use cases](#use-case-diagram-and-use-cases)
 	+ [Use case diagram](#use-case-diagram)
-	+ [Use cases](#use-cases)
-    	+ [Relevant scenarios](#relevant-scenarios)
+	+ [Use cases](#use-case-diagram)
 - [Glossary](#glossary)
 - [System design](#system-design)
 - [Deployment diagram](#deployment-diagram)
@@ -90,7 +89,6 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 | Quality tester | Web GUI | Screen, Keyboard, Mouse, Bar code reader| 
 | Organizational Unit Salesman | Web GUI | Screen, Keyboard, Mouse| 
 | Item | Bar code | Laser Beam |
-| Payment service | Bank system | Screen, Keyboard, Mouse |
 
 
 
@@ -98,11 +96,11 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 |	Actor	|Story|
 | :-: | :-: |
-|Warehouse Manager| Michael is 42 and work as a manager for a medium company. He is bordened of work and every day he has to face different problems. Because of his huge responsibilities he sometimes can’t sleep at night. But after his company started using the Easy Warehouse software Michael had time back for himself.	|
+|Warehouse Manager| Michael is 42 and work as a manager for a medium company. He is bordened of work and every day he has to face different problems. Because of his huge responsibilities he sometimes can't sleep at night. But after his company started using the EZWH software Michael had time back for himself.	|
 |Warehouse Worker |	Darryl is 40 years old and works as the move-that-heavy-box-over-there guy at a warehouse. He hates this job. His back aches more and more each day and it pays little to nothing, but he has to put food on the table for his two kids and that's the only thing that keeps him going. Recently his boss, Michael, introduced some sort of software to manage the warehouse, which is nice. Now Darryl bippity-boppities his boxes with that laser-pistol-smartphone thingy and the system automatically keeps track of them. He's happier now as he doesn't need to report and see Michael's face that often, and if he screws something up, he can always blame it on the software.|
 |Supplier | Dwight is 43 years old and is a salesman at Dunder Mifflin Inc., a paper and packaging supply company. He is a hard worker but he could do much more if only the sales process wasn't so slow and time consuming. He wastes hours and hours on the phone to agree on orders with his customers and for any changes he is forced to call customers again to communicate the changes. But since his customers started using the EZWH software, he conveniently receives supply orders by email and with just one click sends the order directly to the warehouse.  |
 |Quality Tester| Creed is 48 and works in the quality office of a warehouse. He loves this work and he is really involved in this. He is responsible in verifying that items received by the warehouse achieve strict quality parameter. Creed is really accurate and careful in this job and spends almost all of his attention to check each single item with different instruments. For this reason he is not interested in waste a lot of time in directly update on the pc specific test failures and acceptance of each item. When he has the result of quality tests, he wants to quickly report these in order to make warehouse workers able to physically manage items just checked.	|
-|Organizational Unit Salesman	| TODO |
+|Organizational Unit Salesman| Jim is a 30 years old salesman in the company's organizational unit. He sells items to customers and then orders them in the company's warehouse so they can be sent over to the customers. He always thought of it as a temporary job, that he would find something more enjoyable and profitable later but, as months grew years, he found himself sitting in the same desk every day, drowning in boredom. Everything is so stale in his workplace, however, recently they introduced a new software, EZWH software, which allows Jim to manage most of the things through the browser, instead of making tons of phonecalls that take way more time. Now he has more time to prank other coworkers and hit on that cute new secretary. |
 
 # Functional and non functional requirements
 
@@ -200,6 +198,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 
 # Use case diagram and use cases
 
+## Use case diagram
 ![Getting Started](./media/diagrams/UseCaseDiagram.jpg)
 
 
@@ -212,7 +211,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  Nominal Scenario |  A defines a new user and specifies its role and access rights  |
 |  Variants     | A modifies fields, role or access rights of an existing user |
 
-##### Scenario 1.1
+### Scenario 1.1
 
 | Scenario |  Create user and define role and rights |
 | ------------- |:-------------:| 
@@ -224,7 +223,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  3    |  A confirms the inserted data |
 
 
-##### Scenario 1.2
+### Scenario 1.2
 
 | Scenario |  Delete user |
 | ------------- |:-------------:| 
@@ -235,7 +234,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  1    |  A selects user X  |
 |  2    |  X deleted from the system |
 
-##### Scenario 1.3
+### Scenario 1.3
 
 | Scenario |  Modify user data, role and rights |
 | ------------- |:-------------:| 
@@ -257,27 +256,27 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 | Nominal scenario | W assigns a storage space to an item |
 | Variants | Update position of item in the warehouse | 
 
-##### Scenario 2.1
+### Scenario 2.1
 | Scenario | Warehouse worker stores item successfully |
 | ------------- |:-------------:|
 | Precondition | Warehouse worker W has items to store | 
 | | W is logged into the system | 
 | | The warehouse has sufficient storage space |
 | Post condition | The system records item's storage space |
-| Step | Description |
+| Step# | Description |
 | 1 | W provides to the system the id of the item being managed |
 | 2 | W provides to the system the id of the storage space to be assigned |
 | 3 | The system informs W that the item can be stored and that the position has been recorded |
 | 4 | W stores the item in the storage space |
 
-##### Scenario 2.2
+### Scenario 2.2
 | Scenario | Warehouse worker can't store item |
 | ------------- |:-------------:|
 | Precondition | Warehouse worker W has items to store |
 | | W is logged into the system |  
 | | The warehouse has sufficient storage space |
 | Post condition | The system records item's storage space |
-| Step | Description |
+| Step# | Description |
 | 1 | W provides to the system the id of the item being managed |
 | 2 | W provides to the system the id of the storage space to be assigned |
 | 3 | The system informs W that the item can't be stored in that space |
@@ -291,29 +290,29 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 | Post condition | W knows the position of the item | 
 | Nominal scenario | W queries the EzWarehouse system with item's identifying data and receives its position in return |
 
-##### Scenario 3.1
+### Scenario 3.1
 | Scenario | Warehouse worker finds item in the warehouse |
 | ------------- |:-------------:|
 | Precondition | The item is stored in the warehouse |
 | | W  is logged into the system | 
 | Post condition | W knows the exact storage space of an item |
-| Step | Description |
+| Step# | Description |
 | 1 |  W provides to the system identifying information of an item |
 | 2 |  EZWarehouse system serches in the database for the item |
 | 3 |  EZWarehouse system provides information about the location of the searched item |
 
 
-##### Scenario 3.2
+### Scenario 3.2
 | Scenario | Warehouse worker doesn't find item in the warehouse |
 | ------------- |:-------------:|
 | Precondition |  W is logged into the system | 	|
 | Post condition | W knows that there's no item in the warehouse that matches the query |
-| Step | Description |
+| Step# | Description |
 | 1 |  W provides to the system identifying information of an item |
 | 2 | The EZWarehouse system searches in the database for the item |
 | 3 | The EZWarehouse system doesn't find the item and informs  W that there's no such item in the warehouse. |
 
-## Use case 4 - Login
+## Use case 4, UC4 - Login
 | Actors Involved   | User |
 | ------------- |:-------------:|
 |  Precondition | User X's account exists |
@@ -321,23 +320,23 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  Nominal Scenario | X identifies to the system |
 |  Variants     | Identification data don't match an existing account |
 
-##### Scenario 4.1
+### Scenario 4.1
 |   Scenario    |   Login is performed correctly    |
 | ------------- |:-------------:|
 |   Precondition | User X account exists |
 |   Postcondition | X is logged in |
-| Step | Description |
+| Step# | Description |
 | 1 | X enters the login interface |
 | 2 | X provides the requested identification data |
 | 3 | The system checks the provided identification data |
 | 4 | X has access to his account |
 
-##### Scenario 4.2
+### Scenario 4.2
 | Scenario | Login is performed incorrectly |
 | ------------- |:-------------:|
 | Precondition | User X doesn't have correct login data |
 | Postcondition| X can't access the system |
-| Step | Description |
+| Step# | Description |
 | 1 | X enters the login interface |
 | 2 | X provides the requested login data |
 | 3 | The system checks the provided login |
@@ -356,7 +355,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  Exceptions  | Items are unavailable |
 |      | Delivery service is unavailable or does not satisfy items requests|
 
-##### Scenario 5.1 
+### Scenario 5.1 
 | Scenario |  Create a shipping label for delivery service |
 | ------------- |:-------------:| 
 |  Precondition     | Warehouse manager M account exists and is logged in |
@@ -368,7 +367,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  1  |  M enters shipping address of the order |
 |  2    |  M confirms the entered data |
 
-##### Scenario 5.2  
+### Scenario 5.2  
 | Scenario |  Reject the order |
 | ------------- |:-------------:| 
 |  Precondition     | Warehouse manager M account exists and is logged in |
@@ -387,7 +386,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  Nominal Scenario | The Warehouse manager creates a new order request. He compiles the different fields and sends the request to S |
 |  Exceptions    | Unavailability of physical space in the warehouse |
 
-##### Scenario 6.1
+### Scenario 6.1
 | Scenario 6.1 | Create a new order |
 | ------------- |:-------------:| 
 |Precondition | Warehouse manager M is logged in | 
@@ -400,7 +399,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |4 	  | M processes the payment of the order
 |5    | Status of the order changes to "Processing" ?
 
-## Use case 7, Manage suppliers
+## Use case 7, UC7 -  Manage suppliers
 | Actors Involved | Warehouse manager |
 | ------------- |:-------------:| 
 |  Precondition  | Warehouse manager M is logged in |
@@ -409,7 +408,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  Variants     | M deletes supplier X from the list of suppliers|
 |        | M edits some information about supplier X|
 
-##### Scenario 7.1
+### Scenario 7.1
 | Scenario 7.1 |Insert a new supplier |
 | ------------- |:-------------:| 
 |Precondition | Supplier S is not on the list of suppliers | 
@@ -419,7 +418,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |1    | A supplier is chosen by the manager and added to the list of suppliers, along with additional information |
 |2    | The changes are saved by the software |
 
-##### Scenario 7.2
+### Scenario 7.2
 | Scenario 7.2 | Delete a supplier |
 | ------------- |:-------------:| 
 |Precondition | Supplier S is on the list of suppliers | 
@@ -440,7 +439,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  Nominal Scenario |  Q performs a quality test on I and sends it to the warehouse  |
 |  Variants     | The quality test is negative and I is rejected and sent back to S |
 
-##### Scenario 8.1
+### Scenario 8.1
 
 | Scenario |  Quality Test is positive and the Item is accepted |
 | -------------- |:-------------:| 
@@ -453,7 +452,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 |  3    |  Q reports tests results |
 |  4    |  All tests are passed so I is sent to the warehouse |
 
-##### Scenario 8.2
+### Scenario 8.2
 
 | Scenario |  Quality Test is negative and the Item is rejected |
 | -------------- |:-------------:| 
