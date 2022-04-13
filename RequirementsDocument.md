@@ -156,6 +156,37 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
  |  FR8.4     | List tests needed for each item |
  |  FR8.5     | Show quality tests result |
 
+### Access right, actor vs function
+
+| Function | EZWarehouse Adminstrator | Warehouse manager | Quality tester | Worker | Organizational unit salesman |
+| ------------- |:-------------|--|--|--|--|
+| FR1| Yes |No |No |No |No |
+| FR2| Yes |No |No |No |No |
+| FR3| Yes |Yes |Yes |Yes |Yes |
+| FR4| No |Yes |No |No |No |
+| FR6.1| No |Yes |No |Yes |No |
+| FR6.2| No |Yes |No |Yes |No |
+| FR6.3| No |Yes |No |No |No |
+| FR6.4| No |No |No |Yes |No |
+| FR6.5| No |No |No |Yes |No |
+| FR6.6| No |Yes |No |No |No |
+| FR7.1| No |No |No |No |Yes |
+| FR7.2| No |Yes |No |No |No |
+| FR7.3| No |Yes |No |No |No |
+| FR7.4| No |Yes |No |No |No |
+| FR7.5| No |Yes |No |No |No |
+| FR7.6| No |Yes |No |No |No |
+| FR7.7| No |Yes |No |No |No |
+| FR8.1| No |Yes |No |No |No |
+| FR8.2| No |No |Yes |No |No |
+| FR8.3| No |Yes |No |No |No |
+| FR8.4| No |Yes |Yes |No |No |
+| FR8.5| No |Yes |No |No |No |
+
+
+
+
+
 ## Non Functional Requirements
 
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
