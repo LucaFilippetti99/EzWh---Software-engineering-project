@@ -89,6 +89,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 | Quality tester | Web GUI | Screen, Keyboard, Mouse, Bar code reader| 
 | Organizational Unit Salesman | Web GUI | Screen, Keyboard, Mouse| 
 | Item | Bar code | Laser Beam |
+| Payment service |	Bank system | Screen, Keyboard, Mouse|
 
 
 
