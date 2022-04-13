@@ -182,9 +182,6 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 | FR8.5| No |Yes |No |No |No |
 
 
-
-
-
 ## Non Functional Requirements
 
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
