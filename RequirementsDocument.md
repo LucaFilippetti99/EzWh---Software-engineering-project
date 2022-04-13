@@ -170,7 +170,7 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 | FR6.6| No |Yes |No |No |No |
 | FR7.1| No |No |No |No |Yes |
 | FR7.2| No |Yes |No |No |No |
-| FR7.3| No |Yes |No |No |No |
+| FR7.3| No |Yes |No |Yes |No |
 | FR7.4| No |Yes |No |No |No |
 | FR7.5| No |Yes |No |No |No |
 | FR7.6| No |Yes |No |No |No |
