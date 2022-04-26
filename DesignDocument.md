@@ -107,8 +107,63 @@ return
 
 ```plantuml
 
+<<<<<<< HEAD
 
   
+=======
+actor Manager
+note over EzWH : EzWH includes GUI and DataLayer
+Manager -> EzWH : SKUs (id) of products to restock, Quantities
+
+activate EzWH
+EzWH -> DataLayer : HashMap<SkuId: Integer, Quantity: Integer>
+activate DataLayer
+
+loop foreach SkuId
+  DataLayer -> SKU : getSkuById(id)
+  activate SKU
+  return SKU
+
+  DataLayer -> SKU : getId()
+  activate SKU
+  return id
+
+  DataLayer -> SKU : getPrice()
+  activate SKU
+  return price
+
+  DataLayer -> SKU : getDescription()
+  activate SKU
+  return description
+
+  DataLayer -> ProductRestockOrder : newProductRestockOrder(skuId, price, description, quantity)
+  activate ProductRestockOrder
+  return ProductRestockOrder
+
+  end
+
+Manager -> EzWH : Supplier
+
+EzWH -> DataLayer : supplier
+DataLayer -> Supplier : getId(supplier)
+activate Supplier
+return supplierId: Integer
+
+DataLayer -> RestockOrder : newRestockOrder(issueDate, productList, supplierId )
+activate RestockOrder
+return RestockOrder
+
+DataLayer -> RestockOrder : setState("ISSUED")
+activate RestockOrder
+return Done
+
+return
+
+
+
+
+
+>>>>>>> 02bb38093455c82ac3f375f8528826726a66addb
 
 ```
 

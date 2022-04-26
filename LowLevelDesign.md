@@ -299,6 +299,8 @@ Item <-- User :Supplier
 
 ReturnOrder <-- ProductOrder
 ReturnOrder --> SkuItem
+ReturnOrder -- RestockOrder
+
 InternalOrder -- ProductOrder
 
 User --> RestockOrder :Supplier
