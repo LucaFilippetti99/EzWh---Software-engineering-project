@@ -2,6 +2,9 @@
 
 ```plantuml
 @startuml
+
+/'CONTROLLARE SINTASSI '/
+
 class SKU {
     -id: Integer
     -description: String
@@ -84,49 +87,49 @@ class User
 }
 
 class TestDescriptor{
-    -id : Integer;
-    -name : String;
-    -procedureDescription : String;
-    -idSKU: Integer;
+    -id : Integer
+    -name : String
+    -procedureDescription : String
+    -idSKU: Integer
 
-    +getId(): Integer;
-    +getIdTestDescriptor(): Integer;
-    +getIdSKU(): Integer;
+    +getId(): Integer
+    +getIdTestDescriptor(): Integer
+    +getIdSKU(): Integer
 
-    +getProcedure(): String;
-    +setProcedure(id: Integer, procedureDescription: String): void;
+    +getProcedure(): String
+    +setProcedure(id: Integer, procedureDescription: String): void
 }
 
 class TestResult{
-    -id : Integer;
-    -idTestDescriptor : Integer;
-    -RFID: String;
-    -Date : String; 
-    -Result: Boolean;
+    -id : Integer
+    -idTestDescriptor : Integer
+    -RFID: String
+    -Date : Date
+    -Result: Boolean
 
-    +getId(): Integer;
-    +getRFID(): String;
-    +getResult(): Boolean;
-    +getIdTestDescriptor(): Integer;
-    +getDate(): String;
+    +getId(): Integer
+    +getRFID(): String
+    +getResult(): Boolean
+    +getIdTestDescriptor(): Integer
+    +getDate(): String
 
-    +updateTestResult(id: Integer, idTestDescriptor: Integer, Date: String, Result: Boolean): void;
+    +updateTestResult(id: Integer, idTestDescriptor: Integer, Date: Date, Result: Boolean): void
 }
 class Item {
-    -id: Integer;
-    -description: String;
-    -price: double;
-    -idSKU: Integer;
-    -idSupplier: Integer;
+    -id: Integer
+    -description: String
+    -price: double
+    -idSKU: Integer
+    -idSupplier: Integer
 
-    +getId(): Integer;
-    +getDescription(): String;
-    +getPrice(): double;
-    +getIdSKU(): Integer;
-    +getIdSupplier(): Integer;
+    +getId(): Integer
+    +getDescription(): String
+    +getPrice(): double
+    +getIdSKU(): Integer
+    +getIdSupplier(): Integer
 
-    +setDescription(id: Integer, description: String): void;
-    +setPrice(id: Integer, price: double): void;
+    +setDescription(id: Integer, description: String): void
+    +setPrice(id: Integer, price: double): void
 }
 
 class RestockOrder{
@@ -145,8 +148,6 @@ class RestockOrder{
     +getSku(): Sku
     +getSupplier():Supplier
     +setState(NewState:String): void
-    +deleteSkuFromOrder(restockOrderId: Integer, skuId : SkuId): void 
-    +issueRestockOrder(RestockOrderID): void
 }
 
 class ProductRestockOrder{
@@ -168,7 +169,7 @@ class ReturnOrder{
     -productsOrderList : List<ProductOrder>
     -RestockOrderId : Integer
 
-    +startReturnOrder(Sku, Quantity, SupplierId): restockOrder
+  
 }
 class Customer{
     -CustomerId : Integer
@@ -215,33 +216,78 @@ class DataLayer{
 
     +getAllPositions(): List<Position>
     --
+
+    +newUser(name: String, surname: String, email: String, type: String, password: String)
+    +updateUser(id: Integer, name: String, surname: String, email: String, type: String, password: String)
+    +deleteUser(id: Integer): void
+
+    --
     +newTestDescriptor(name: String, procedureDescription: String, idSKU: Integer): TestDescriptor
     +updateTestDescriptor(id: Integer, name: String, procedureDescription: String, idSKU: Integer): TestDescriptor
     +deleteTestDescriptor(id: Integer): void
-    --
-    +newTestResult(RFID: Integer, idTestDescriptor: Integer, Date: String, Result: Boolean ): TestResult
-    +deleteTestResult(id: Integer): void
-    --
-    +newItem(description: String, price: Float, idSKU: Integer, idSupplier: Integer): Item
-    +updateItem(id: Integer, description: String, price: Float, idSKU: Integer, idSupplier: Integer): void
-    +deleteItem(id: Integer): void
-    --
-    newUser(name: String, surname: String, email: String, type: String, password: String)
-    updateUser(id: Integer, name: String, surname: String, email: String, type: String, password: String)
-    deleteUser(id: Integer): void
 
-    --
     +getTestDescriptors(): List<TestDescriptor>
     +getSpecificTD(id: Integer): TestDescriptor
+    --
+    +newTestResult(RFID: Integer, idTestDescriptor: Integer, Date: Date, Result: Boolean ): TestResult
+    +deleteTestResult(id: Integer): void
 
     +getTestResults(): List<TestResult>
     +getTestResult(RFID: String): List<TestResult> or Map<Integer,TestResult>
     +getSpecificTR(RFID: String): TestResult
+    --
+    +newItem(description: String, price: double, idSKU: Integer, idSupplier: Integer): Item
+    +updateItem(id: Integer, description: String, price: double, idSKU: Integer, idSupplier: Integer): void
+    +deleteItem(id: Integer): void
 
+    
     +getItems(): List<Item>
     +getSpecificItem(id: Integer): Item
+    --
+    +newRestockOrder(issueDate : Date, supplierId: supplier): RestockOrder
+    +modifyStateRestockOrder(restockOrderId : Integer, State : String) : RestockOrder
+    +deleteRestockOrder(restockOrderId: Integer): void 
+
+    +addTrasportNote(restockOrderId: Integer, note: String): RestockOrder
+    +addSkuToRestockOrder(restockOrderId: Integer, skuItemList: HashMap<SKU, Integer >) : RestockOrder
+    +listSkuRestockOrder(restockOrderId: Integer): List<SKU>
+    +getAllRestockOrders(): List<RestockOrder>
+    +getIssuedRestockOrders(): List<RestockOrder>
+    +getRestockOrder(restockOrderId: Integer): RestockOrder
+    +deleteSkuFromOrder(restockOrderId: Integer, skuId : SkuId): void
+    +issueRestockOrder(RestockOrderID: Integer): void
+    --
+    +newProductRestockOrder(SkuId: Integer, price: float, Description : String, Quantity : Integer): ProductRestockOrder 
+    --
+    +newProductInternalOrder(SkuId: Integer, RFID : String, Description : String, Quantity : Integer): ProductInternalOrder 
+    --
+    +newReturnOrder(returnDate : Date, restockOrderId: Integer): ReturnOrder
+    +deleteReturnOrder(returnOrderId: Integer): void 
+
+    +addSkuToReturnOrder(skuItemList: HashMap<SKU, Integer>) : ReturnOrder 
+    +startReturnOrder(Sku, Quantity, SupplierId): restockOrder
+    +getAllReturnOrders(): List<ReturnOrder>
+    +getReturnOrder(returnOrderId: Integer): ReturnOrder
+    --
+    +newCustomer(customerId: Integer, customerName : String, customerSurname : String) : Customer
+    +deleteCustomer (customerId : Integer) : void
+
+    +getCustomerById(customerId: Integer) : Customer
+    +getAllCustomer(): List<Customer>
+    --
+    +newInternalOrder(issueDate : Date, customerId: Integer, productOrderList : List<ProductOrder>): InternalOrder
+    +deleteInternalOrder(internalOrderId: Integer) : void
+
+    +deleteSkuInternalOrder(internalOrderId: Integer, SkuProduct: SKU) : InternalOrder 
+    +getAllInternalOrders(): List<InternalOrder>
+    +getIssuedInternalOrders(): List<InternalOrder>
+    +getAcceptedInternalOrders(): List<InternalOrder>
+    +getInternalOrder(internalOrderId: Integer): InternalOrder
+    +replyToInternalOrder(internalOrderId: Integer, reply: String) : InternalOrder 
+    +addSkuToInternalOrder(productToOrder : ProductOrder): InternalOrder 
 }
 
+/' TODO '/
 
 TestResult <-- TestDescriptor
 TestDescriptor <-- SKU
@@ -262,5 +308,6 @@ Customer --> InternalOrder
 
 ProductOrder <|.. ProductInternalOrder
 ProductOrder <|.. ProductRestockOrder
+
 @enduml
 ```
