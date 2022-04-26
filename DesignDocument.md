@@ -48,15 +48,15 @@ The design must satisfy the Official Requirements document
 
 \<for each functional requirement from the requirement document, list which classes concur to implement it>
 
-| FR | InternalOrder | RestockOrder | Order | TestDescriptor | TestResult |Item  | ...|
-| -------- | ----- | ------------ | ------- | ----- | ------------ | ------- | ------- |
-| FR1 | X | Y | Y | Y | Y | Y | Y |
-| FR2 | X | X | Y | Y | Y | Y | Y |
-| FR3 | X | X | X | X | X | Y | Y |
-| FR4 | X | X | Y | Y | Y | Y | Y |
-| FR5 | X | X | X | Y | X | Y | Y |
-| FR6 | X | X | Y | Y | Y | Y | Y |
-| FR7 | Y | Y | Y | Y | Y | X | Y |
+| FR | InternalOrder | RestockOrder | ReturnOrder | ProductOrder |ProductRestockOrder| TestDescriptor | TestResult |Item  | SkuItem| Sku | 
+| -------- | ----- | ------------ | ------- | ----- | ------------ | ------- | ------- | ------- |   ------- |   ------- |   
+| FR1 | X | X | X | X | X | Y | Y | ND | ND | ND |
+| FR2 | X | X | X | X | X | Y | Y | ND | ND | ND |
+| FR3 | X | X | X | X | X | X | Y | ND | ND | ND |
+| FR4 | X | X | X | X | X | Y | Y | ND | ND | ND |
+| FR5 | X | Y | Y | X | Y | X | Y | ND | ND | ND |
+| FR6 | Y | X | X | Y | X | Y | Y | ND | ND | ND |
+| FR7 | X | X | X | X | X | Y | X | ND | ND | ND |
 
 
 
