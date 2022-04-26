@@ -107,10 +107,6 @@ return
 
 ```plantuml
 
-<<<<<<< HEAD
-
-  
-=======
 actor Manager
 note over EzWH : EzWH includes GUI and DataLayer
 Manager -> EzWH : SKUs (id) of products to restock, Quantities
@@ -163,7 +159,6 @@ return
 
 
 
->>>>>>> 02bb38093455c82ac3f375f8528826726a66addb
 
 ```
 
