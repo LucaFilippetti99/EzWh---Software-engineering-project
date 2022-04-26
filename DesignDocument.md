@@ -25,7 +25,18 @@ The design must satisfy the Official Requirements document
 # High level design 
 
 <discuss architectural styles used, if any>
-<report package diagram>
+
+```plantuml
+    package "EzWarehouse"{
+        package  "gui"  {
+    }
+    
+    package "data"{
+    }
+  
+    gui ..> data
+    }
+```
 
 
 
