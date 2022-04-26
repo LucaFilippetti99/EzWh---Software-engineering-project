@@ -25,7 +25,18 @@ The design must satisfy the Official Requirements document
 # High level design 
 
 <discuss architectural styles used, if any>
-<report package diagram>
+
+```plantuml
+    package "EzWarehouse"{
+        package  "gui"  {
+    }
+    
+    package "data"{
+    }
+  
+    gui ..> data
+    }
+```
 
 
 
@@ -69,9 +80,73 @@ The design must satisfy the Official Requirements document
 # Verification sequence diagrams 
 \<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
 
+Scenario 1-1 Create SKU S 
+Scenario 3-1 Restock Order of SKU S issued by quantity
+Scenario 5-2-3 Record negative and positive test results of all SKU items of a RestockOrder
+Scenario 5-3-1 Stock all SKU items of a RO
+Scenario 6-1 Return order of SKU items that failed quality test
+Scenario 10-1 Internal Order IO Completed
+
+## Scenario 1-1 
+### Create SKU S
+
+```plantuml
+
+actor Manager
+note over EzWH : EzWH includes GUI and DataLayer
+Manager -> EzWH : Description, Weight, Volume, Notes, Price, Available Quantity
+activate EzWH
+
+EzWH -> DataLayer : newSKU(description, weight, volume, notes, price, availableQuantity)
+activate DataLayer
+
+DataLayer -> DataLayer : new SKU
+
+return
+
+```
+
+## Scenario 3-1
+### Restock Order of SKU S issued by quantity
+
+```plantuml
+
+  
+
+```
+
+## Scenario 5-2-3 
+### Record negative and positive test results of all SKU items of a RestockOrder
+
+```plantuml
+
+  
+
+```
+
+## Scenario 5-3-1 
+### Stock all SKU items of a RO
+
+```plantuml
 
 
 
+```
+
+## Scenario 6-1 
+### Return order of SKU items that failed quality test
+
+```plantuml
 
 
 
+```
+
+## Scenario 10-1 
+### Internal Order IO Completed
+
+```plantuml
+
+
+
+```
