@@ -1,11 +1,11 @@
 # Design Document 
 
 
-Authors: 
+Authors: Alessandro Gelsi, Luca Filippetti, Maciej Lampart, Michele Morgigno
 
-Date:
+Date: 26/04/2022
 
-Version:
+Version: 1.4
 
 
 # Contents
@@ -50,18 +50,9 @@ The design must satisfy the Official Requirements document
     }
 ```
 
-
-
-
-
-
 # Low level design
 
 <for each package, report class diagram>
-
-
-
-
 
 
 
@@ -80,13 +71,6 @@ The design must satisfy the Official Requirements document
 | FR5 | X | Y | Y | X | Y | Y | X | ND | ND | ND |
 | FR6 | Y | X | X | Y | X | X | X | ND | ND | ND |
 | FR7 | X | X | X | X | X | X | Y | ND | ND | ND |
-
-
-
-
-
-
-
 
 
 # Verification sequence diagrams 

@@ -38,7 +38,7 @@ class SkuItem {
 }
 
 class Position {
-    -IdPosition: String
+    -PositionId: String
     -aisle: Integer
     -row: Integer
     -col: Integer
@@ -47,7 +47,7 @@ class Position {
     -occupiedWeight: double
     -occupiedVolume: double
 
-    +getIdPosition(): String
+    +getPositionId(): String
     +getAisle(): Integer
     +getRow(): Integer
     +getCol(): Integer
@@ -56,7 +56,7 @@ class Position {
     +getOccupiedWeight(): double
     +getOccupiedVolume(): double
 
-    +setIdPosition(IdPosition: String): void
+    +setPositionId(PositionId: String): void
     +setAisle(aisle: Integer): void
     +setRow(row: Integer): void
     +setCol(col: Integer): void
@@ -90,11 +90,11 @@ class TestDescriptor{
     -id : Integer
     -name : String
     -procedureDescription : String
-    -idSKU: Integer
+    -SKUId: Integer
 
     +getId(): Integer
     +getIdTestDescriptor(): Integer
-    +getIdSKU(): Integer
+    +getSKUId(): Integer
 
     +getProcedure(): String
     +setProcedure(id: Integer, procedureDescription: String): void
@@ -119,14 +119,14 @@ class Item {
     -id: Integer
     -description: String
     -price: double
-    -idSKU: Integer
-    -idSupplier: Integer
+    -SKUId: Integer
+    -SupplierId: Integer
 
     +getId(): Integer
     +getDescription(): String
     +getPrice(): double
-    +getIdSKU(): Integer
-    +getIdSupplier(): Integer
+    +getSKUId(): Integer
+    +getSupplierId(): Integer
 
     +setDescription(id: Integer, description: String): void
     +setPrice(id: Integer, price: double): void
@@ -138,14 +138,15 @@ class RestockOrder{
     -State : String
     -TrasportNote: String
     -ProductList : List<ProductRestockOrder>
-    -SkuItemList : Hashmap<SkuId, Integer> 
+    -SkuItemList : Hashmap<SkuId, String> 
     -Supplier : SupplierId
 
     +getId(): Integer
     +getIssueDate(): Date
     +getTrasportNote(): String
     +getState() : String
-    +getSku(): Sku
+    +getProductList() : List<ProductRestockOrder>
+    +getSkuItemList(): Hashmap<SkuId, String>
     +getSupplier():Supplier
     +setState(NewState:String): void
 }
@@ -168,15 +169,6 @@ class ReturnOrder{
     -ReturnDate : Date
     -productsOrderList : List<ProductOrder>
     -RestockOrderId : Integer
-
-  
-}
-class Customer{
-    -CustomerId : Integer
-    -CustomerName : String
-    -CustomerSurname : String
-
-    +getCustomerId(): Integer
 }
 
 class InternalOrder{
@@ -192,6 +184,13 @@ class InternalOrder{
     +setState(NewState:String): void
 }
 
+class Customer{
+    -CustomerId : Integer
+    -CustomerName : String
+    -CustomerSurname : String
+
+    +getCustomerId(): Integer
+}
 
 class DataLayer{
     +newSKU(description: String, weight: double, volume: double, price: float, notes: String): SKU
@@ -210,9 +209,9 @@ class DataLayer{
     +getSkuItemByRFID(RFID: String): SkuItem
 
     --
-    +newPosition(IdPosition: String, aisle: Integer, row: Integer, col: Integer, maxWeight: double, maxVolume: double, occupiedWeight: double, occupiedVolume: double): Position
-    +updatePosition(IdPosition: String, aisle: Integer, row: Integer, col: Integer, maxWeight: double, maxVolume: double, occupiedWeight: double, occupiedVolume: double): Position
-    +deletePosition(IdPosition: String): void
+    +newPosition(PositionId: String, aisle: Integer, row: Integer, col: Integer, maxWeight: double, maxVolume: double, occupiedWeight: double, occupiedVolume: double): Position
+    +updatePosition(PositionId: String, aisle: Integer, row: Integer, col: Integer, maxWeight: double, maxVolume: double, occupiedWeight: double, occupiedVolume: double): Position
+    +deletePosition(PositionId: String): void
 
     +getAllPositions(): List<Position>
     --
@@ -222,8 +221,8 @@ class DataLayer{
     +deleteUser(id: Integer): void
 
     --
-    +newTestDescriptor(name: String, procedureDescription: String, idSKU: Integer): TestDescriptor
-    +updateTestDescriptor(id: Integer, name: String, procedureDescription: String, idSKU: Integer): TestDescriptor
+    +newTestDescriptor(name: String, procedureDescription: String, SKUId: Integer): TestDescriptor
+    +updateTestDescriptor(id: Integer, name: String, procedureDescription: String, SKUId: Integer): TestDescriptor
     +deleteTestDescriptor(id: Integer): void
 
     +getTestDescriptors(): List<TestDescriptor>
@@ -236,25 +235,25 @@ class DataLayer{
     +getTestResult(RFID: String): List<TestResult> or Map<Integer,TestResult>
     +getSpecificTR(RFID: String): TestResult
     --
-    +newItem(description: String, price: double, idSKU: Integer, idSupplier: Integer): Item
-    +updateItem(id: Integer, description: String, price: double, idSKU: Integer, idSupplier: Integer): void
+    +newItem(description: String, price: double, SKUId: Integer, SupplierId: Integer): Item
+    +updateItem(id: Integer, description: String, price: double, SKUId: Integer, SupplierId: Integer): void
     +deleteItem(id: Integer): void
 
     
     +getItems(): List<Item>
     +getSpecificItem(id: Integer): Item
     --
-    +newRestockOrder(issueDate : Date, supplierId: supplier): RestockOrder
-    +modifyStateRestockOrder(restockOrderId : Integer, State : String) : RestockOrder
+    +newRestockOrder(issueDate : Date, productList : List<ProductRestockOrder>, supplierId: supplier): RestockOrder
     +deleteRestockOrder(restockOrderId: Integer): void 
 
-    +addTrasportNote(restockOrderId: Integer, note: String): RestockOrder
-    +addSkuToRestockOrder(restockOrderId: Integer, skuItemList: HashMap<SKU, Integer >) : RestockOrder
-    +listSkuRestockOrder(restockOrderId: Integer): List<SKU>
     +getAllRestockOrders(): List<RestockOrder>
-    +getIssuedRestockOrders(): List<RestockOrder>
     +getRestockOrder(restockOrderId: Integer): RestockOrder
-    +deleteSkuFromOrder(restockOrderId: Integer, skuId : SkuId): void
+    +getIssuedRestockOrders(): List<RestockOrder>
+    +modifyStateRestockOrder(restockOrderId : Integer, State : String) : RestockOrder
+    +addSkuItemToRestockOrder(restockOrderId: Integer, skuItemList: HashMap<SKU, Integer >) : RestockOrder
+    +deleteSkuFromOrder(restockOrderId: Integer, productToDelete : ProductRestockOrder ): void
+    +addTrasportNote(restockOrderId: Integer, note: String): RestockOrder
+    +listSkuRestockOrder(restockOrderId: Integer): List<SKU>
     +issueRestockOrder(RestockOrderID: Integer): void
     --
     +newProductRestockOrder(SkuId: Integer, price: float, Description : String, Quantity : Integer): ProductRestockOrder 
@@ -300,11 +299,13 @@ Item <-- User :Supplier
 
 ReturnOrder <-- ProductOrder
 ReturnOrder --> SkuItem
-InternalOrder --> SkuItem
+InternalOrder -- ProductOrder
 
 User --> RestockOrder :Supplier
 RestockOrder --> SkuItem
 Customer --> InternalOrder
+User -- DataLayer
+
 
 ProductOrder <|.. ProductInternalOrder
 ProductOrder <|.. ProductRestockOrder
