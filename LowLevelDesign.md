@@ -65,14 +65,14 @@ class Position {
 
 class User
 {
-    -id: integer
+    -id: Integer
     -name: String
     -surname: String
     -email: String
     -type: String
     -password: String
   
-    +getId(): integer
+    +getId(): Integer
     +getName(): String
     +getSurname(): String
     +getEmail(): String
@@ -197,15 +197,15 @@ class DataLayer{
     +updateSKU(id:Integer, description: String, weight: double, volume: double, price: float, notes: String): SKU
     +deleteSKU(id: Integer): void
 
-    +getAllSKU(): SKU[]
+    +getAllSKU(): List<SKU>
     +getSkuById(id integer): SKU
     --
     +newSkuItem(RFID: String, available: Boolean, dateOfStock: Date): SkuItem
     +updateSkuItem(RFID: String, available: Boolean, dateOfStock: Date): SkuItem
     +deleteSkuItem(RFID: String): void
 
-    +getAllSkuItems(): SkuItem[]
-    +getSkuItemsById(id: Integer): SkuItem[]
+    +getAllSkuItems(): List<SkuItem>
+    +getSkuItemsById(id: Integer): List<SkuItem>
     +getSkuItemByRFID(RFID: String): SkuItem
 
     --
@@ -213,7 +213,7 @@ class DataLayer{
     +updatePosition(IdPosition: String, aisle: Integer, row: Integer, col: Integer, maxWeight: double, maxVolume: double, occupiedWeight: double, occupiedVolume: double): Position
     +deletePosition(IdPosition: String): void
 
-    +getAllPositions(): Position[]
+    +getAllPositions(): List<Position>
     --
     +newTestDescriptor(name: String, procedureDescription: String, idSKU: Integer): TestDescriptor
     +updateTestDescriptor(id: Integer, name: String, procedureDescription: String, idSKU: Integer): TestDescriptor
@@ -225,6 +225,11 @@ class DataLayer{
     +newItem(description: String, price: Float, idSKU: Integer, idSupplier: Integer): Item
     +updateItem(id: Integer, description: String, price: Float, idSKU: Integer, idSupplier: Integer): void
     +deleteItem(id: Integer): void
+    --
+    newUser(name: String, surname: String, email: String, type: String, password: String)
+    updateUser(id: Integer, name: String, surname: String, email: String, type: String, password: String)
+    deleteUser(id: Integer): void
+
     --
     +getTestDescriptors(): List<TestDescriptor>
     +getSpecificTD(id: Integer): TestDescriptor
