@@ -36,17 +36,17 @@ The design must satisfy the Official Requirements document
 
 # High level design 
 
-<discuss architectural styles used, if any>
+<TODO discuss architectural styles used, if any>
 
 ```plantuml
-    package "EzWarehouse"{
-        package  "gui"  {
+    package "it.polito.ezwh"{
+        package  it.polito.ezwh.gui{
     }
     
-    package "data"{
+    package it.polito.ezwh.data{
     }
   
-    gui ..> data
+    it.polito.ezwh.gui ..> it.polito.ezwh.data
     }
 ```
 
@@ -54,9 +54,7 @@ The design must satisfy the Official Requirements document
 
 <for each package, report class diagram>
 
-
-
-
+LowLevelDesign.md
 
 # Verification traceability matrix
 
@@ -153,7 +151,7 @@ return RestockOrder
 
 DataLayer -> RestockOrder : setState("ISSUED")
 activate RestockOrder
-return Done
+return
 
 return
 ```
@@ -164,7 +162,7 @@ return
 ```plantuml
 
 actor QualityEmployee
-
+note over EzWH : EzWH includes GUI and DataLayer
 QualityEmployee -> EzWH : RestockOrder
 activate EzWH
 
@@ -205,6 +203,14 @@ return TestResult
 end
 
 end
+
+EzWH -> RestockOrder : getId()
+activate RestockOrder
+return restockOrderId : Integer
+
+EzWH -> DataLayer : modifyStateRestockOrder(restockOrderId, TESTED)
+activate DataLayer
+return 
 ```
 
 ## Scenario 5-3-1 
@@ -253,6 +259,49 @@ deactivate RestockOrder
 
 ```plantuml
 
+actor DeliveryEmployee
 
+DeliveryEmployee -> EzWH : InternalOrder
+activate EzWH
+
+EzWH -> InternalOrder : getProductList()
+activate InternalOrder
+return List<ProductInternalOrder>
+
+loop foreach ProductInternalOrder
+
+EzWH -> ProductInternalOrder : getRFID()
+activate ProductInternalOrder
+return rfid: String
+
+EzWH -> DataLayer : getSkuItemByRFID(rfid)
+activate DataLayer
+return SkuItem
+
+EzWH -> SkuItem : getSku()
+activate SkuItem
+return SKU
+
+EzWH -> SkuItem : setAvailable(false)
+activate SkuItem
+return 
+
+EzWH -> SKU : getAvailableQuantity()
+activate SKU
+return availableQuantity : Integer
+
+EzWH -> SKU : setAvailableQuantity(availableQuantity - 1)
+activate SKU
+return
+
+end
+
+EzWH -> InternalOrder : getId()
+activate InternalOrder
+return internalOrderId : Integer
+
+EzWH -> DataLayer : modifyStateInternalOrder(internalOrderId, COMPLETED)
+activate DataLayer
+return
 
 ```
