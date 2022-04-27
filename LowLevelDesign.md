@@ -232,7 +232,7 @@ class Supplier{
     -SupplierName : String
     -SupplierSurname : String
 
-    +getSupplierId(): Integer
+    +getId(): Integer
 }
 
 
@@ -328,6 +328,10 @@ class DataLayer{
     +getCustomerById(CustomerId: Integer) : Customer
     +getAllCustomer(): List<Customer>
     --
+        +newSupplier(SupplierId: Integer, supplierName : String, supplierSurname : String) : Supplier
+        +deleteSupplier (SupplierId : Integer) : void
+        +getIdBySupplierName(supplierName : String) : Integer
+    --
     +newInternalOrder(issueDate : Date, CustomerId: Integer, productOrderList : List<ProductOrder>): InternalOrder
     +deleteInternalOrder(internalOrderId: Integer) : void
 
@@ -361,7 +365,13 @@ InternalOrder -- ProductOrder
 User --> RestockOrder :Supplier
 RestockOrder --> SkuItem
 Customer --> InternalOrder
-User -- DataLayer
+
+
+User <|.. Manager
+User <|.. Clerk
+User <|.. QualityCheckEmployee
+User <|.. DeliveryEmployee
+User <|.. Administrator
 
 
 ProductOrder <|.. ProductInternalOrder
