@@ -43,7 +43,12 @@ The design must satisfy the Official Requirements document
         package  it.polito.ezwh.gui{
     }
     
+<<<<<<< HEAD
     package it.polito.ezwh.data{
+=======
+
+    package "data"{
+>>>>>>> 7373cc0ffc585880d360db7ad697583c6cf30c8e
     }
   
     it.polito.ezwh.gui ..> it.polito.ezwh.data
@@ -223,24 +228,46 @@ note over EzWH : EzWH includes GUI and DataLayer
 Clerk -> EzWH : Select List<RFID> 
 activate EzWH
 
-EzWH -> DataLayer : stockSkuItem(Position)
+loop foreach RFID
+
+EzWH -> DataLayer : getSkuItemByRFID(RFID)
 activate DataLayer
+return  SkuItem
 
-DataLayer -> SkuItem : updateSkuItemPosition(PositionId)
-activate SkuItem
-deactivate SkuItem
+EzWH -> DataLayer : Skuitem
+activate DataLayer
+DataLayer -> Sku : getSku()
+activate Sku
+return  Sku
 
-DataLayer -> Sku : updateSkuAvailability(PositionId)
+DataLayer -> Sku : setPosition()
+activate Sku
+return
+deactivate Sku
+
+end
+
+DataLayer -> Sku : setAvailableQuantity(AvailableQuantity)
 activate Sku
 deactivate Sku
 
 
-Position -> Position :   setOccupiedWeight(Weight W)
-Position -> Position :    setOccupiedVolume(Volume V)
 
-DataLayer -> RestockOrder :  modifyStateRestockOrder(restockOrderId I, Completed) 
-activate RestockOrder
-deactivate RestockOrder
+DataLayer -> Position : setOccupiedWeight(Weight W)
+activate Position
+return
+deactivate Position
+
+DataLayer -> Position : setOccupiedVolume(Volume V)
+activate Position
+return
+deactivate Position
+  
+
+EzWH -> DataLayer :  modifyStateRestockOrder(restockOrderId I, Completed)
+return 
+deactivate DataLayer
+
 
 
 ```
