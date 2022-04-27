@@ -1,12 +1,10 @@
-# Design Document 
-
+# Design Document
 
 Authors: Alessandro Gelsi, Luca Filippetti, Maciej Lampart, Michele Morgigno
 
 Date: 26/04/2022
 
 Version: 1.4
-
 
 # Contents
 
@@ -32,21 +30,20 @@ Version: 1.4
 
 # Instructions
 
-The design must satisfy the Official Requirements document 
+The design must satisfy the Official Requirements document
 
-# High level design 
+# High level design
 
 EzWarehouse is based on a layered architecture with one single thread. It is composed by two main packages, relatives to Gui and to Data. Gui is linked to Data with a link from the one to the second. Data contains classes regarding information and model needed to be shown in the Gui. Gui package is used to draw the graphic element and interact with it.
-
 
 ```plantuml
     package "it.polito.ezwh"{
         package  it.polito.ezwh.gui{
     }
-    
+
     package it.polito.ezwh.data{
     }
-  
+
     it.polito.ezwh.gui ..> it.polito.ezwh.data
     }
 ```
@@ -63,7 +60,7 @@ class SKU {
     -volume: double
     -price: double
     -notes: String
-    -availableQuantity: Integer 
+    -availableQuantity: Integer
 
     +getId(): Integer
     +getDescription(): String
@@ -131,7 +128,7 @@ class User
     -email: String
     -type: String
     -password: String
-  
+
     +getId(): Integer
     +getName(): String
     +getSurname(): String
@@ -153,7 +150,7 @@ class TestDescriptor{
     +getIdTestDescriptor(): Integer
     +getSKUId(): Integer
     +getProcedure(): String
-    
+
     +setProcedure(procedureDescription: String): void
 }
 
@@ -193,7 +190,7 @@ class RestockOrder{
     -state : String
     -trasportNote: String
     -productList : List<ProductRestockOrder>
-    -skuItemList : Hashmap<SKUId, RFID> 
+    -skuItemList : Hashmap<SKUId, RFID>
     -SupplierId : Integer
 
     +getId(): Integer
@@ -201,7 +198,7 @@ class RestockOrder{
     +getTrasportNote(): String
     +getState() : String
     +getProductList() : List<ProductRestockOrder>
-    +getSkuItemList(): List<RFID>
+    +getSkuItemList(): List<rfid: String>
     +getSupplier():Supplier
 
 }
@@ -238,7 +235,7 @@ class ReturnOrder{
     -returnDate : Date
     -productsOrderList : List<ProductOrder>
     -RestockOrderId : Integer
-    
+
     +getReturnOrderId(): Integer
     +getReturnDate(): Date
     +getProductsOrderList(): List<ProductOrder>
@@ -340,18 +337,19 @@ interface DataInterface{
 
     +getTestResults(): List<TestResult>
     +getTestResult(RFID: String): List<TestResult> or Map<Integer,TestResult>
+    +getTestResult(RFID: String, result: boolean): List<TestResult> or Map<Integer,TestResult>
     +getSpecificTR(RFID: String): TestResult
     --
     +newItem(description: String, price: double, SKUId: Integer, SupplierId: Integer): Item
     +updateItem(id: Integer, description: String, price: double, SKUId: Integer, SupplierId: Integer): void
     +deleteItem(id: Integer): void
 
-    
+
     +getItems(): List<Item>
     +getSpecificItem(id: Integer): Item
     --
     +newRestockOrder(issueDate : Date, productList : List<ProductRestockOrder>, supplierId: supplier): RestockOrder
-    +deleteRestockOrder(restockOrderId: Integer): void 
+    +deleteRestockOrder(restockOrderId: Integer): void
 
     +getAllRestockOrders(): List<RestockOrder>
     +getRestockOrder(RestockOrderId: Integer): RestockOrder
@@ -363,15 +361,15 @@ interface DataInterface{
     +listSkuRestockOrder(restockOrderId: Integer): List<SKU>
     +issueRestockOrder(RestockOrderID: Integer): void
     --
-    +newProductRestockOrder(SKUId: Integer, price: double, description : String, quantity : Integer): ProductRestockOrder 
+    +newProductRestockOrder(SKUId: Integer, price: double, description : String, quantity : Integer): ProductRestockOrder
     --
-    +newProductInternalOrder(SKUId: Integer, RFID : String, description : String, quantity : Integer): ProductInternalOrder 
+    +newProductInternalOrder(SKUId: Integer, RFID : String, description : String, quantity : Integer): ProductInternalOrder
     --
     +newReturnOrder(returnDate : Date, restockOrderId: Integer): ReturnOrder
-    +deleteReturnOrder(returnOrderId: Integer): void 
+    +deleteReturnOrder(returnOrderId: Integer): void
 
-    +addSkuToReturnOrder(skuItemList: HashMap<SKUId, RFID>) : ReturnOrder 
-    +startReturnOrder(SKUId: Integer, quantity: Integer, SupplierId: Integer): RestockOrder
+    +addSkuToReturnOrder(skuItemList: HashMap<SKUId, RFID>) : ReturnOrder
+    +startReturnOrder(returnOrder: ReturnOrder, SupplierId: Integer): void
     +getAllReturnOrders(): List<ReturnOrder>
     +getReturnOrder(returnOrderId: Integer): ReturnOrder
     --
@@ -388,21 +386,19 @@ interface DataInterface{
     +newInternalOrder(issueDate : Date, CustomerId: Integer, productOrderList : List<ProductOrder>): InternalOrder
     +deleteInternalOrder(internalOrderId: Integer) : void
 
-    +deleteSkuInternalOrder(internalOrderId: Integer, SkuProduct: SKU) : InternalOrder 
+    +deleteSkuInternalOrder(internalOrderId: Integer, SkuProduct: SKU) : InternalOrder
     +getAllInternalOrders(): List<InternalOrder>
     +getIssuedInternalOrders(): List<InternalOrder>
     +getAcceptedInternalOrders(): List<InternalOrder>
     +getInternalOrder(internalOrderId: Integer): InternalOrder
     +modifyStateInternalOrder(InternalOrderId : Integer, state : String) : InternalOrder
-    +replyToInternalOrder(internalOrderId: Integer, reply: String) : InternalOrder 
-    +addSkuToInternalOrder(productToOrder : ProductOrder): InternalOrder 
+    +replyToInternalOrder(internalOrderId: Integer, reply: String) : InternalOrder
+    +addSkuToInternalOrder(productToOrder : ProductOrder): InternalOrder
 }
 
 class DataImpl{
 
 }
-
-/' TODO '/
 
 User <|.. Manager : <<extends>>
 User <|.. Clerk    : <<extends>>
@@ -436,7 +432,7 @@ TestDescriptor -- SKU
 
 Position -- SKU
 Position -- SkuItem
- 
+
 User -- DataLayer
 
 DataLayer ..|> DataInterface : <<implements>>
@@ -455,20 +451,20 @@ DataLayer -- TestDescriptor
 
 \<for each functional requirement from the requirement document, list which classes concur to implement it>
 
-| FR | InternalOrder | RestockOrder | ReturnOrder | ProductOrder |ProductRestockOrder| ProductInternalOrder| TestDescriptor | TestResult |Item  | SkuItem| Sku | Position |User| Manager | Clerk| Customer| Supplier |  
-| -------- | ----- | ------------ | ------- | ----- | ------------ | ------- | ------- | ------- |   ------- |   ------- |------- | ------- | ------- | ------- | ------- | ------- |    
-| FR1 | X | X | X | X | X | ND | X | X | ND | ND | ND |
-| FR2 | X | X | X | X | X | ND | X | X | ND | ND | ND |
-| FR3 | X | X | X | X | X | ND | Y | X | ND | ND | ND |
-| FR4 | X | X | X | X | X | ND | X | X | ND | ND | ND |
-| FR5 | X | Y | Y | X | Y | ND | Y | X | ND | ND | ND |
-| FR6 | Y | X | X | Y | X | ND | X | X | ND | ND | ND |
-| FR7 | X | X | X | X | X | ND | X | Y | ND | ND | ND |
+| FR  | InternalOrder | RestockOrder | ReturnOrder | ProductOrder | ProductRestockOrder | ProductInternalOrder | TestDescriptor | TestResult | Item | SkuItem | Sku | Position | User | Manager | Clerk | Customer | Supplier |
+| --- | ------------- | ------------ | ----------- | ------------ | ------------------- | -------------------- | -------------- | ---------- | ---- | ------- | --- | -------- | ---- | ------- | ----- | -------- | -------- |
+| FR1 | X             | X            | X           | X            | X                   | ND                   | X              | X          | ND   | ND      | ND  |
+| FR2 | X             | X            | X           | X            | X                   | ND                   | X              | X          | ND   | ND      | ND  |
+| FR3 | X             | X            | X           | X            | X                   | ND                   | Y              | X          | ND   | ND      | ND  |
+| FR4 | X             | X            | X           | X            | X                   | ND                   | X              | X          | ND   | ND      | ND  |
+| FR5 | X             | Y            | Y           | X            | Y                   | ND                   | Y              | X          | ND   | ND      | ND  |
+| FR6 | Y             | X            | X           | Y            | X                   | ND                   | X              | X          | ND   | ND      | ND  |
+| FR7 | X             | X            | X           | X            | X                   | ND                   | X              | Y          | ND   | ND      | ND  |
 
+# Verification sequence diagrams
 
-# Verification sequence diagrams 
+## Scenario 1-1
 
-## Scenario 1-1 
 ### Create SKU S
 
 ```plantuml
@@ -488,6 +484,7 @@ return
 ```
 
 ## Scenario 3-1
+
 ### Restock Order of SKU S issued by quantity
 
 ```plantuml
@@ -542,18 +539,28 @@ return
 
 ```
 
-## Scenario 5-2-3 
+## Scenario 5-2-3
+
 ### Record negative and positive test results of all SKU items of a RestockOrder
 
 ```plantuml
 
 actor QualityEmployee
 note over EzWH : EzWH includes GUI and DataLayer
-QualityEmployee -> EzWH : RestockOrder
+QualityEmployee -> EzWH : restockOrderId
 activate EzWH
 
-EzWH -> RestockOrder : getSkuItemList()
+EzWH -> DataLayer : getRestockOrder(restockOrderId)
+activate DataLayer
+return RestockOrder
+
+EzWH -> DataLayer : RestockOrder
+activate DataLayer
+
+DataLayer -> RestockOrder : getSkuItemList()
 activate RestockOrder
+return List<rfid>
+
 return List<rfid>
 
 loop foreach rfid
@@ -596,17 +603,18 @@ return restockOrderId : Integer
 
 EzWH -> DataLayer : modifyStateRestockOrder(restockOrderId, TESTED)
 activate DataLayer
-return 
+return
 ```
 
-## Scenario 5-3-1 
+## Scenario 5-3-1
+
 ### Stock all SKU items of a RO
 
 ```plantuml
 
 actor Clerk
 note over EzWH : EzWH includes GUI and DataLayer
-Clerk -> EzWH : Select List<RFID> 
+Clerk -> EzWH : Select List<RFID>
 activate EzWH
 
 loop foreach RFID
@@ -643,64 +651,138 @@ DataLayer -> Position : setOccupiedVolume(Volume V)
 activate Position
 return
 deactivate Position
-  
+
 EzWH -> RestockOrder : getId()
 activate RestockOrder
 return restockOrderId : Integer
 
 EzWH -> DataLayer :  modifyStateRestockOrder(restockOrderId I, Completed)
-return 
+return
 deactivate DataLayer
 
 
 
 ```
 
-## Scenario 6-1 
+## Scenario 6-1
+
 ### Return order of SKU items that failed quality test
 
 ```plantuml
 
 actor Manager
-Manager -> EzWh : Restock order id
-activate EzWh
-    EzWh -> DataLayer : RestockOrderID : integer
-    Activate DataLayer
-        DataLayer -> DataLayer : getRestockOrder(RestockOrderID)
-            DataLayer -> ReturnOrder : newReturnOrder(returnDate, restockOrderId)
-            Activate ReturnOrder
-            ReturnOrder --> DataLayer : ReturnOrder
-        Deactivate ReturnOrder
-        DataLayer -> DataLayer : GetSkuItemList()
-        DataLayer -> DataLayer : getTestResult(RFID)
-        DataLayer --> EzWh : List<String> (SKU items)
-        EzWh --> Manager : List of SKU items that failed quality test
-        Manager -> EzWh : List of SKU items to return
-        EzWh -> DataLayer : List<String> (SKU items)
-        Activate ReturnOrder
-            DataLayer -> ReturnOrder : addSkuToReturnOrder(skuItemList)
-            ReturnOrder --> DataLayer : ReturnOrder
-        Deactivate ReturnOrder
-        DataLayer --> EzWh
-        EzWh --> Manager
-        Manager -> EzWh : Confirmation
-        EzWh -> Data
+Manager -> EzWH : restockOrderId
+activate EzWH
 
+EzWH -> DataLayer : getRestockOrder(restockOrderID)
+activate DataLayer
+return RestockOrder
+
+EzWH -> DataLayer : RestockOrder
+activate DataLayer
+
+DataLayer -> ReturnOrder : newReturnOrder(returnDate, restockOrderId)
+activate ReturnOrder
+return ReturnOrder
+return ReturnOrder
+
+deactivate ReturnOrder
+EzWH -> RestockOrder : getSkuItemList()
+activate RestockOrder
+return List<rfid: String>
+
+loop foreach rfid
+
+EzWH -> DataLayer : getTestResult(RFID, false)
+activate DataLayer
+return List<TestResult>
+
+alt List<TestResult> has elements 
+
+EzWH -> SkuItem : getSKU()
+activate SkuItem
+return SKU
+
+EzWH -> SKU : getId()
+activate SKU
+return skuId
+
+EzWH -> EzWH : negativeItems.add(skuId, rfid)
+
+end
+
+end
+
+EzWH -> Manager : negativeItems: HashMap<skuId, rfid>
+deactivate EzWH
+
+Manager -> EzWH : itemsToReturn: HashMap<skuId, rfid>
+activate EzWH 
+
+EzWH -> DataLayer : addSkuToReturnOrder(itemsToReturn)
+activate DataLayer
+return ReturnOrder
+
+return ReturnOrder
+
+Manager -> EzWH : Confirmation
+activate EzWH
+
+loop foreach skuId, rfid
+
+EzWH -> DataLayer: getSkuItemByRFID(rfid)
+activate DataLayer
+return SkuItem
+
+EzWH -> SkuItem: setAvailable(false)
+activate SkuItem
+return 
+
+end
+
+EzWH -> RestockOrder: getSupplier()
+activate RestockOrder
+return Supplier
+
+EzWH -> Supplier: getId()
+activate Supplier
+return supplierId
+
+EzWH -> DataLayer: startReturnOrder(ReturnOrder, supplierId)
+activate DataLayer
+
+DataLayer -> Supplier: ReturnOrder
+activate Supplier
+return
+
+return
+
+return ReturnOrder submitted
 
 ```
 
-## Scenario 10-1 
+## Scenario 10-1
+
 ### Internal Order IO Completed
 
 ```plantuml
 
 actor DeliveryEmployee
 
-DeliveryEmployee -> EzWH : InternalOrder
+DeliveryEmployee -> EzWH : internalOrderId
 activate EzWH
 
-EzWH -> InternalOrder : getProductList()
+EzWH -> DataLayer : getInternalOrder(internalOrderId)
+activate DataLayer
+return InternalOrder
+
+EzWH -> DataLayer : InternalOrder
+activate DataLayer
+
+DataLayer -> InternalOrder : getProductList()
 activate InternalOrder
+return List<ProductInternalOrder>
+
 return List<ProductInternalOrder>
 
 loop foreach ProductInternalOrder
@@ -719,7 +801,7 @@ return SKU
 
 EzWH -> SkuItem : setAvailable(false)
 activate SkuItem
-return 
+return
 
 EzWH -> SKU : getAvailableQuantity()
 activate SKU
