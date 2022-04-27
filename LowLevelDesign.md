@@ -263,7 +263,7 @@ class DataLayer{
     +deleteReturnOrder(returnOrderId: Integer): void 
 
     +addSkuToReturnOrder(skuItemList: HashMap<SKUId, RFID>) : ReturnOrder 
-    +startReturnOrder(SKUId: Integer, quantity: Integer, SupplierId: Integer): restockOrder
+    +startReturnOrder(SKUId: Integer, quantity: Integer, SupplierId: Integer): RestockOrder
     +getAllReturnOrders(): List<ReturnOrder>
     +getReturnOrder(returnOrderId: Integer): ReturnOrder
     --
