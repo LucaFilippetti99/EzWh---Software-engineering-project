@@ -451,15 +451,15 @@ DataLayer -- TestDescriptor
 
 \<for each functional requirement from the requirement document, list which classes concur to implement it>
 
-| FR  | InternalOrder | RestockOrder | ReturnOrder | ProductOrder | ProductRestockOrder | ProductInternalOrder | TestDescriptor | TestResult | Item | SkuItem | Sku | Position | User | Manager | Clerk | Customer | Supplier |
-| --- | ------------- | ------------ | ----------- | ------------ | ------------------- | -------------------- | -------------- | ---------- | ---- | ------- | --- | -------- | ---- | ------- | ----- | -------- | -------- |
-| FR1 | X             | X            | X           | X            | X                   | ND                   | X              | X          | ND   | ND      | ND  |
-| FR2 | X             | X            | X           | X            | X                   | ND                   | X              | X          | ND   | ND      | ND  |
-| FR3 | X             | X            | X           | X            | X                   | ND                   | Y              | X          | ND   | ND      | ND  |
-| FR4 | X             | X            | X           | X            | X                   | ND                   | X              | X          | ND   | ND      | ND  |
-| FR5 | X             | Y            | Y           | X            | Y                   | ND                   | Y              | X          | ND   | ND      | ND  |
-| FR6 | Y             | X            | X           | Y            | X                   | ND                   | X              | X          | ND   | ND      | ND  |
-| FR7 | X             | X            | X           | X            | X                   | ND                   | X              | Y          | ND   | ND      | ND  |
+| FR  | InternalOrder | RestockOrder | ReturnOrder | ProductOrder | ProductRestockOrder | ProductInternalOrder | TestDescriptor | TestResult | Item | SkuItem | Sku | Position | User | Manager | Clerk | Customer | Supplier | DataLayer |
+| --- | ------------- | ------------ | ----------- | ------------ | ------------------- | -------------------- | -------------- | ---------- | ---- | ------- | --- | -------- | ---- | ------- | ----- | -------- | -------- | --------- |
+| FR1 |               |              |             |              |                     |                      |                |            |      |         |     |          | X    | X       | X     | X        | X        | X         |
+| FR2 |               |              |             |              |                     |                      |                |            |      |         | X   |          |      |         |       |          |          | X         |
+| FR3 |               |              |             |              |                     |                      | X              |            |      |         | X   | X        |      |         |       |          |          | X         |
+| FR4 |               |              |             |              |                     |                      |                |            |      |         |     |          | X    |         |       | X        |          | X         |
+| FR5 |               | X            | X           |              | X                   |                      | X              |            |      | X       | X   | X        | X    |         |       |          | X        | X         |
+| FR6 | X             |              |             | X            |                     | X                    |                |            |      | X       | X   |          | X    |         |       | X        |          | X         |
+| FR7 |               |              |             |              |                     |                      |                | X          | X    |         |     |          |      |         |       |          |          | X         |
 
 # Verification sequence diagrams
 
