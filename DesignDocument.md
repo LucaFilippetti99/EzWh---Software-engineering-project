@@ -65,15 +65,15 @@ LowLevelDesign.md
 
 \<for each functional requirement from the requirement document, list which classes concur to implement it>
 
-| FR | InternalOrder | RestockOrder | ReturnOrder | ProductOrder |ProductRestockOrder| TestDescriptor | TestResult |Item  | SkuItem| Sku | 
-| -------- | ----- | ------------ | ------- | ----- | ------------ | ------- | ------- | ------- |   ------- |   ------- |   
-| FR1 | X | X | X | X | X | X | X | ND | ND | ND |
-| FR2 | X | X | X | X | X | X | X | ND | ND | ND |
-| FR3 | X | X | X | X | X | Y | X | ND | ND | ND |
-| FR4 | X | X | X | X | X | X | X | ND | ND | ND |
-| FR5 | X | Y | Y | X | Y | Y | X | ND | ND | ND |
-| FR6 | Y | X | X | Y | X | X | X | ND | ND | ND |
-| FR7 | X | X | X | X | X | X | Y | ND | ND | ND |
+| FR | InternalOrder | RestockOrder | ReturnOrder | ProductOrder |ProductRestockOrder| ProductInternalOrder| TestDescriptor | TestResult |Item  | SkuItem| Sku | Position |User| Manager | Clerk| Customer| Supplier |  
+| -------- | ----- | ------------ | ------- | ----- | ------------ | ------- | ------- | ------- |   ------- |   ------- |------- | ------- | ------- | ------- | ------- | ------- |    
+| FR1 | X | X | X | X | X | ND | X | X | ND | ND | ND |
+| FR2 | X | X | X | X | X | ND | X | X | ND | ND | ND |
+| FR3 | X | X | X | X | X | ND | Y | X | ND | ND | ND |
+| FR4 | X | X | X | X | X | ND | X | X | ND | ND | ND |
+| FR5 | X | Y | Y | X | Y | ND | Y | X | ND | ND | ND |
+| FR6 | Y | X | X | Y | X | ND | X | X | ND | ND | ND |
+| FR7 | X | X | X | X | X | ND | X | Y | ND | ND | ND |
 
 
 # Verification sequence diagrams 
