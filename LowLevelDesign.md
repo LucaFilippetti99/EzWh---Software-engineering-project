@@ -351,11 +351,11 @@ class DataImpl{
 
 /' TODO '/
 
-User <|.. Manager
-User <|.. Clerk
-User <|.. QualityCheckEmployee
-User <|.. DeliveryEmployee
-User <|.. Administrator
+User <|.. Manager : <<extends>>
+User <|.. Clerk    : <<extends>>
+User <|.. QualityCheckEmployee: <<extends>>
+User <|.. DeliveryEmployee: <<extends>>
+User <|.. Administrator: <<extends>>
 
 ProductOrder <|.. ProductInternalOrder : <<extends>>
 ProductOrder <|.. ProductRestockOrder : <<extends>>
@@ -393,14 +393,6 @@ DataImpl -- RestockOrder
 DataImpl -- SKU
 DataImpl -- SkuItem
 DataImpl -- TestDescriptor
-
-
-
-
-
-
-
-
 
 
 @enduml
