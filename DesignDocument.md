@@ -43,12 +43,7 @@ The design must satisfy the Official Requirements document
         package  it.polito.ezwh.gui{
     }
     
-<<<<<<< HEAD
     package it.polito.ezwh.data{
-=======
-
-    package "data"{
->>>>>>> 7373cc0ffc585880d360db7ad697583c6cf30c8e
     }
   
     it.polito.ezwh.gui ..> it.polito.ezwh.data
