@@ -232,6 +232,7 @@ return  Sku
 
 DataLayer -> Sku : setPosition()
 activate Sku
+return
 deactivate Sku
 
 end
@@ -244,14 +245,17 @@ deactivate Sku
 
 DataLayer -> Position : setOccupiedWeight(Weight W)
 activate Position
+return
 deactivate Position
 
 DataLayer -> Position : setOccupiedVolume(Volume V)
 activate Position
+return
 deactivate Position
   
 
-EzWH -> DataLayer :  modifyStateRestockOrder(restockOrderId I, Completed) 
+EzWH -> DataLayer :  modifyStateRestockOrder(restockOrderId I, Completed)
+return 
 deactivate DataLayer
 
 
