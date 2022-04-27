@@ -34,7 +34,7 @@ The design must satisfy the Official Requirements document
 
 # High level design
 
-EzWarehouse is based on a layered architecture with one single thread. It is composed by two main packages, relatives to Gui and to Data. Gui is linked to Data with a link from the one to the second. Data contains classes regarding information and model needed to be shown in the Gui. Gui package is used to draw the graphic element and interact with it.
+EzWarehouse is based on a layered architecture with one single thread. It is composed by two main packages, relative to Gui and Data. Gui is linked to Data with a link from the one to the second. Data contains classes regarding information and model needed to be shown in the Gui. Gui package is used to draw the graphic element and interact with it.
 
 ```plantuml
     package "it.polito.ezwh"{
