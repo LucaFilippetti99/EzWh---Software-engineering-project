@@ -491,7 +491,7 @@ return
 
 actor Manager
 note over EzWH : EzWH includes GUI and DataLayer
-Manager -> EzWH : HashMap<SkuId: Integer, Quantity: Integer>
+Manager -> EzWH : HashMap<SKUId: Integer, Quantity: Integer>
 
 loop foreach SkuId
   EzWH -> DataLayer : getSkuById(id)
@@ -510,7 +510,7 @@ loop foreach SkuId
   activate SKU
   return description
 
-  EzWH -> DataLayer : newProductRestockOrder(skuId, price, description, quantity)
+  EzWH -> DataLayer : newProductRestockOrder(SKUId, price, description, quantity)
   activate DataLayer
   return ProductRestockOrder
 
@@ -524,7 +524,7 @@ EzWH -> Supplier : getIdBySupplierName(supplierName)
 activate Supplier
 return supplierId: Integer
 
-EzWH -> DataLayer : newRestockOrder(issueDate, productList, supplierId )
+EzWH -> DataLayer : newRestockOrder(issueDate, productList, SupplierId )
 activate DataLayer
 return RestockOrder
 
@@ -532,7 +532,7 @@ EzWH -> RestockOrder : getId()
 activate RestockOrder
 return restockOrderId : Integer
 
-EzWH -> DataLayer : modifyStateRestockOrder(restockOrderId, "ISSUED")
+EzWH -> DataLayer : modifyStateRestockOrder(RestockOrderId, "ISSUED")
 activate DataLayer
 return
 
@@ -547,10 +547,10 @@ return
 
 actor QualityEmployee
 note over EzWH : EzWH includes GUI and DataLayer
-QualityEmployee -> EzWH : restockOrderId
+QualityEmployee -> EzWH : RestockOrderId
 activate EzWH
 
-EzWH -> DataLayer : getRestockOrder(restockOrderId)
+EzWH -> DataLayer : getRestockOrder(RestockOrderId)
 activate DataLayer
 return RestockOrder
 
@@ -559,13 +559,13 @@ activate DataLayer
 
 DataLayer -> RestockOrder : getSkuItemList()
 activate RestockOrder
-return List<rfid>
+return List<RFID>
 
-return List<rfid>
+return List<RFID>
 
-loop foreach rfid
+loop foreach RFID
 
-EzWH -> DataLayer : getSkuItemByRFID(rfid)
+EzWH -> DataLayer : getSkuItemByRFID(RFID)
 activate DataLayer
 return SkuItem
 
@@ -586,10 +586,10 @@ loop foreach TestDescriptor
 
 EzWH -> TestDescriptor : getId()
 activate TestDescriptor
-return idTestDescriptor: Integer
+return TestDescriptorId: Integer
 
 
-EzWH -> DataLayer : newTestResult(rfid, idTestDescriptor, date, result )
+EzWH -> DataLayer : newTestResult(RFID, TestDescriptorId, date, result )
 activate DataLayer
 return TestResult
 
@@ -599,9 +599,9 @@ end
 
 EzWH -> RestockOrder : getId()
 activate RestockOrder
-return restockOrderId : Integer
+return RestockOrderId : Integer
 
-EzWH -> DataLayer : modifyStateRestockOrder(restockOrderId, TESTED)
+EzWH -> DataLayer : modifyStateRestockOrder(RestockOrderId, TESTED)
 activate DataLayer
 return
 ```
@@ -625,38 +625,38 @@ return  SkuItem
 
 EzWH -> DataLayer : Skuitem
 activate DataLayer
-DataLayer -> Sku : getSku()
-activate Sku
-return  Sku
+DataLayer -> SKU : getSku()
+activate SKU
+return  SKU
 
-DataLayer -> Sku : setPosition()
-activate Sku
+DataLayer -> SKU : setPosition()
+activate SKU
 return
-deactivate Sku
+deactivate SKU
 
 end
 
-DataLayer -> Sku : setAvailableQuantity(AvailableQuantity)
-activate Sku
-deactivate Sku
+DataLayer -> SKU : setAvailableQuantity(AvailableQuantity)
+activate SKU
+deactivate SKU
 
 
 
-DataLayer -> Position : setOccupiedWeight(Weight W)
+DataLayer -> Position : setOccupiedWeight(weight W)
 activate Position
 return
 deactivate Position
 
-DataLayer -> Position : setOccupiedVolume(Volume V)
+DataLayer -> Position : setOccupiedVolume(volume V)
 activate Position
 return
 deactivate Position
 
 EzWH -> RestockOrder : getId()
 activate RestockOrder
-return restockOrderId : Integer
+return RestockOrderId : Integer
 
-EzWH -> DataLayer :  modifyStateRestockOrder(restockOrderId I, Completed)
+EzWH -> DataLayer :  modifyStateRestockOrder(RestockOrderId I, Completed)
 return
 deactivate DataLayer
 
@@ -671,17 +671,17 @@ deactivate DataLayer
 ```plantuml
 
 actor Manager
-Manager -> EzWH : restockOrderId
+Manager -> EzWH : RestockOrderId
 activate EzWH
 
-EzWH -> DataLayer : getRestockOrder(restockOrderID)
+EzWH -> DataLayer : getRestockOrder(RestockOrderId)
 activate DataLayer
 return RestockOrder
 
 EzWH -> DataLayer : RestockOrder
 activate DataLayer
 
-DataLayer -> ReturnOrder : newReturnOrder(returnDate, restockOrderId)
+DataLayer -> ReturnOrder : newReturnOrder(returnDate, RestockOrderId)
 activate ReturnOrder
 return ReturnOrder
 return ReturnOrder
@@ -689,9 +689,9 @@ return ReturnOrder
 deactivate ReturnOrder
 EzWH -> RestockOrder : getSkuItemList()
 activate RestockOrder
-return List<rfid: String>
+return List<RFID: String>
 
-loop foreach rfid
+loop foreach RFID
 
 EzWH -> DataLayer : getTestResult(RFID, false)
 activate DataLayer
@@ -705,18 +705,18 @@ return SKU
 
 EzWH -> SKU : getId()
 activate SKU
-return skuId
+return SKUId
 
-EzWH -> EzWH : negativeItems.add(skuId, rfid)
-
-end
+EzWH -> EzWH : negativeItems.add(SKUId, RFID)
 
 end
 
-EzWH -> Manager : negativeItems: HashMap<skuId, rfid>
+end
+
+EzWH -> Manager : negativeItems: HashMap<SKUId, RFID>
 deactivate EzWH
 
-Manager -> EzWH : itemsToReturn: HashMap<skuId, rfid>
+Manager -> EzWH : itemsToReturn: HashMap<SKUId, RFID>
 activate EzWH 
 
 EzWH -> DataLayer : addSkuToReturnOrder(itemsToReturn)
@@ -728,9 +728,9 @@ return ReturnOrder
 Manager -> EzWH : Confirmation
 activate EzWH
 
-loop foreach skuId, rfid
+loop foreach SKUId, RFID
 
-EzWH -> DataLayer: getSkuItemByRFID(rfid)
+EzWH -> DataLayer: getSkuItemByRFID(RFID)
 activate DataLayer
 return SkuItem
 
@@ -746,9 +746,9 @@ return Supplier
 
 EzWH -> Supplier: getId()
 activate Supplier
-return supplierId
+return SupplierId
 
-EzWH -> DataLayer: startReturnOrder(ReturnOrder, supplierId)
+EzWH -> DataLayer: startReturnOrder(ReturnOrder, SupplierId)
 activate DataLayer
 
 DataLayer -> Supplier: ReturnOrder
@@ -772,7 +772,7 @@ actor DeliveryEmployee
 DeliveryEmployee -> EzWH : internalOrderId
 activate EzWH
 
-EzWH -> DataLayer : getInternalOrder(internalOrderId)
+EzWH -> DataLayer : getInternalOrder(InternalOrderId)
 activate DataLayer
 return InternalOrder
 
@@ -789,9 +789,9 @@ loop foreach ProductInternalOrder
 
 EzWH -> ProductInternalOrder : getRFID()
 activate ProductInternalOrder
-return rfid: String
+return RFID: String
 
-EzWH -> DataLayer : getSkuItemByRFID(rfid)
+EzWH -> DataLayer : getSkuItemByRFID(RFID)
 activate DataLayer
 return SkuItem
 
@@ -817,7 +817,7 @@ EzWH -> InternalOrder : getId()
 activate InternalOrder
 return internalOrderId : Integer
 
-EzWH -> DataLayer : modifyStateInternalOrder(internalOrderId, COMPLETED)
+EzWH -> DataLayer : modifyStateInternalOrder(InternalOrderId, COMPLETED)
 activate DataLayer
 return
 
