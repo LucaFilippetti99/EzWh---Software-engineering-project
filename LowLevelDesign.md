@@ -201,13 +201,40 @@ class InternalOrder{
     -issueDate: Date
     -productOrderList: List<ProductOrder>
     -CostumerId : Integer
+    -State : String
 
     +getId(): Integer
+    +getState() : String
     +getIssueDate(): Date
     +getProductList() : List<ProductInternalOrder>
     +getCostumerId() : Integer
     +setState(NewState:String): void
 }
+
+class Manager{
+
+}
+
+class Clerk{
+
+}
+
+class QualityCheckEmployee{
+
+}
+
+class DeliveryEmployee{
+
+}
+
+class Supplier{
+    -SupplierId : Integer
+    -SupplierName : String
+    -SupplierSurname : String
+
+    +getSupplierId(): Integer
+}
+
 
 class Customer{
     -CustomerId : Integer
