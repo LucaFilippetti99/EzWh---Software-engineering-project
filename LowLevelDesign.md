@@ -27,6 +27,7 @@ class SKU {
     +setPrice(double): void
     +setNotes(String): void
     +setPosition(pos: String): void
+    +setAvailableQuantity(): void
 }
 
 class SkuItem {
