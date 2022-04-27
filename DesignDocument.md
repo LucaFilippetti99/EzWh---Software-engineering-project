@@ -107,53 +107,52 @@ return
 
 actor Manager
 note over EzWH : EzWH includes GUI and DataLayer
-Manager -> EzWH : SKUs (id) of products to restock, Quantities
-
-activate EzWH
-EzWH -> DataLayer : HashMap<SkuId: Integer, Quantity: Integer>
-activate DataLayer
+Manager -> EzWH : HashMap<SkuId: Integer, Quantity: Integer>
 
 loop foreach SkuId
-  DataLayer -> SKU : getSkuById(id)
-  activate SKU
+  EzWH -> DataLayer : getSkuById(id)
+  activate DataLayer
   return SKU
 
-  DataLayer -> SKU : getId()
+  EzWH -> SKU : getId()
   activate SKU
   return id
 
-  DataLayer -> SKU : getPrice()
+  EzWH -> SKU : getPrice()
   activate SKU
   return price
 
-  DataLayer -> SKU : getDescription()
+  EzWH -> SKU : getDescription()
   activate SKU
   return description
 
-  DataLayer -> ProductRestockOrder : newProductRestockOrder(skuId, price, description, quantity)
-  activate ProductRestockOrder
+  EzWH -> DataLayer : newProductRestockOrder(skuId, price, description, quantity)
+  activate DataLayer
   return ProductRestockOrder
 
-  DataLayer -> DataLayer : productList.push(ProductRestockOrder)
+  EzWH -> EzWH : productList.push(ProductRestockOrder)
 
   end
 
-Manager -> EzWH : Supplier
+Manager -> EzWH : supplierName
 
-EzWH -> DataLayer : supplier
-DataLayer -> Supplier : getId(supplier)
+EzWH -> Supplier : getId(supplierName)
 activate Supplier
 return supplierId: Integer
 
-DataLayer -> RestockOrder : newRestockOrder(issueDate, productList, supplierId )
-activate RestockOrder
+EzWH -> DataLayer : newRestockOrder(issueDate, productList, supplierId )
+activate DataLayer
 return RestockOrder
 
-DataLayer -> RestockOrder : setState("ISSUED")
+EzWH -> RestockOrder : getId()
 activate RestockOrder
+return restockOrderId : Integer
+
+EzWH -> DataLayer : modifyStateRestockOrder(restockOrderId, "ISSUED")
+activate DataLayer
 return
 
-return
+
 ```
 
 ## Scenario 5-2-3 
