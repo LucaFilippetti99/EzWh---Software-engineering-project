@@ -449,7 +449,6 @@ DataLayer -- TestDescriptor
 
 # Verification traceability matrix
 
-\<for each functional requirement from the requirement document, list which classes concur to implement it>
 
 | FR  | InternalOrder | RestockOrder | ReturnOrder | ProductOrder | ProductRestockOrder | ProductInternalOrder | TestDescriptor | TestResult | Item | SkuItem | Sku | Position | User | Manager | Clerk | Customer | Supplier | DataLayer |
 | --- | ------------- | ------------ | ----------- | ------------ | ------------------- | -------------------- | -------------- | ---------- | ---- | ------- | --- | -------- | ---- | ------- | ----- | -------- | -------- | --------- |
