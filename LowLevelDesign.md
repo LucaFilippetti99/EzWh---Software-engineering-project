@@ -228,7 +228,7 @@ class DataLayer{
     +getSpecificTD(id: Integer): TestDescriptor
     --
     +newTestResult(RFID: Integer, TestDescriptorId: Integer, date: Date, result: Boolean ): TestResult
-    +modifyTestResult(id: Integer, TestDescriptorId: Integer, date: Date, result: Boolean): void
+    +updateTestResult(id: Integer, TestDescriptorId: Integer, date: Date, result: Boolean): void
     +deleteTestResult(id: Integer): void
 
     +getTestResults(): List<TestResult>
