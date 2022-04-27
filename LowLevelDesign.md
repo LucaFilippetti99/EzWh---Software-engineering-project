@@ -347,35 +347,55 @@ class DataLayer{
 
 /' TODO '/
 
-TestResult <-- TestDescriptor
-TestDescriptor <-- SKU
-SkuItem <-- SKU
-TestResult <-- SkuItem
-Item <-- SKU
-Position <-- SKU
-ProductOrder <-- SKU
-Item <-- User :Supplier
-
-ReturnOrder <-- ProductOrder
-ReturnOrder --> SkuItem
-ReturnOrder -- RestockOrder
-
-InternalOrder -- ProductOrder
-
-User --> RestockOrder :Supplier
-RestockOrder --> SkuItem
-Customer --> InternalOrder
-
-
 User <|.. Manager
 User <|.. Clerk
 User <|.. QualityCheckEmployee
 User <|.. DeliveryEmployee
 User <|.. Administrator
 
-
 ProductOrder <|.. ProductInternalOrder
 ProductOrder <|.. ProductRestockOrder
+
+
+Supplier -- Item
+Customer -- InternalOrder
+
+InternalOrder -- SkuItem
+InternalOrder -- SKU
+InternalOrder -- ProductInternalOrder
+
+RestockOrder -- Supplier
+RestockOrder -- Item
+RestockOrder -- ReturnOrder
+RestockOrder -- ProductRestockOrder
+RestockOrder -- SkuItem
+
+ReturnOrder -- SkuItem
+
+TestResult -- TestDescriptor
+TestResult -- SkuItem
+
+TestDescriptor -- SKU
+
+Position -- SKU
+Position -- SkuItem
+ 
+User -- DataLayer
+
+DataLayer -- InternalOrder
+DataLayer -- RestockOrder
+DataLayer -- SKU
+DataLayer -- SkuItem
+DataLayer -- TestDescriptor
+
+
+
+
+
+
+
+
+
 
 @enduml
 ```
