@@ -132,7 +132,7 @@ class Item {
 }
 
 class RestockOrder{
-    -RestockOrderID : Integer
+    -RestockOrderId : Integer
     -issueDate: Date
     -state : String
     -trasportNote: String
