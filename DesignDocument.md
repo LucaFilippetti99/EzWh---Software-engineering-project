@@ -396,7 +396,7 @@ interface DataInterface{
     +addSkuToInternalOrder(productToOrder : ProductOrder): InternalOrder
 }
 
-class DataImpl{
+class DataLayer{
 
 }
 
