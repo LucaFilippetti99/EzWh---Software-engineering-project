@@ -3,8 +3,6 @@
 ```plantuml
 @startuml
 
-/'CONTROLLARE SINTASSI '/
-
 class SKU {
     -id: Integer
     -description: String
@@ -99,7 +97,7 @@ class TestDescriptor{
     +getSKUId(): Integer
 
     +getProcedure(): String
-    +setProcedure(id: Integer, procedureDescription: String): void
+    +setProcedure(procedureDescription: String): void
 }
 
 class TestResult{
@@ -114,8 +112,6 @@ class TestResult{
     +getResult(): Boolean
     +getTestDescriptorId(): Integer
     +getDate(): String
-
-    +updateTestResult(id: Integer, TestDescriptorId: Integer, date: Date, result: Boolean): void
 }
 class Item {
     -id: Integer
@@ -130,8 +126,8 @@ class Item {
     +getSKUId(): Integer
     +getSupplierId(): Integer
 
-    +setDescription(id: Integer, description: String): void
-    +setPrice(id: Integer, price: double): void
+    +setDescription(description: String): void
+    +setPrice(price: double): void
 }
 
 class RestockOrder{
@@ -140,15 +136,15 @@ class RestockOrder{
     -state : String
     -trasportNote: String
     -productList : List<ProductRestockOrder>
-    -SkuItemList : Hashmap<SkuId, String> 
-    -Supplier : SupplierId
+    -skuItemList : Hashmap<SKUId, RFID> 
+    -SupplierId : Integer
 
     +getId(): Integer
     +getIssueDate(): Date
     +getTrasportNote(): String
     +getState() : String
     +getProductList() : List<ProductRestockOrder>
-    +getSkuItemList(): Hashmap<SkuId, String>
+    +getSkuItemList(): Hashmap<SKUId, RFID>
     +getSupplier():Supplier
     +setState(NewState:String): void
 }
@@ -231,6 +227,7 @@ class DataLayer{
     +getSpecificTD(id: Integer): TestDescriptor
     --
     +newTestResult(RFID: Integer, TestDescriptorId: Integer, date: Date, result: Boolean ): TestResult
+    +modifyTestResult(id: Integer, TestDescriptorId: Integer, date: Date, result: Boolean): void
     +deleteTestResult(id: Integer): void
 
     +getTestResults(): List<TestResult>
@@ -252,7 +249,7 @@ class DataLayer{
     +getRestockOrder(RestockOrderId: Integer): RestockOrder
     +getIssuedRestockOrders(): List<RestockOrder>
     +modifyStateRestockOrder(RestockOrderId : Integer, State : String) : RestockOrder
-    +addSkuItemToRestockOrder(RestockOrderId: Integer, skuItemList: HashMap<SKU, Integer >) : RestockOrder
+    +addSkuItemToRestockOrder(RestockOrderId: Integer, skuItemList: HashMap<SKUId, RFID >) : RestockOrder
     +deleteSkuFromOrder(RestockOrderId: Integer, productToDelete : ProductRestockOrder ): void
     +addTrasportNote(RestockOrderId: Integer, note: String): RestockOrder
     +listSkuRestockOrder(restockOrderId: Integer): List<SKU>
@@ -266,7 +263,7 @@ class DataLayer{
     +deleteReturnOrder(returnOrderId: Integer): void 
 
     +addSkuToReturnOrder(skuItemList: HashMap<SKU, Integer>) : ReturnOrder 
-    +startReturnOrder(Sku, Quantity, SupplierId): restockOrder
+    +startReturnOrder(SKUId: Integer, quantity: Integer, SupplierId: Integer): restockOrder
     +getAllReturnOrders(): List<ReturnOrder>
     +getReturnOrder(returnOrderId: Integer): ReturnOrder
     --
