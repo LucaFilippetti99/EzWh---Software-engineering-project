@@ -136,7 +136,7 @@ loop foreach SkuId
 
 Manager -> EzWH : supplierName
 
-EzWH -> Supplier : getId(supplierName)
+EzWH -> Supplier : getIdBySupplierName(supplierName)
 activate Supplier
 return supplierId: Integer
 
