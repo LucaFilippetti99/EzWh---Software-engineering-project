@@ -345,6 +345,10 @@ class DataLayer{
     +addSkuToInternalOrder(productToOrder : ProductOrder): InternalOrder 
 }
 
+class DataImpl{
+
+}
+
 /' TODO '/
 
 User <|.. Manager
@@ -353,8 +357,8 @@ User <|.. QualityCheckEmployee
 User <|.. DeliveryEmployee
 User <|.. Administrator
 
-ProductOrder <|.. ProductInternalOrder
-ProductOrder <|.. ProductRestockOrder
+ProductOrder <|.. ProductInternalOrder : <<extends>>
+ProductOrder <|.. ProductRestockOrder : <<extends>>
 
 
 Supplier -- Item
@@ -380,13 +384,15 @@ TestDescriptor -- SKU
 Position -- SKU
 Position -- SkuItem
  
-User -- DataLayer
+User -- DataImpl
 
-DataLayer -- InternalOrder
-DataLayer -- RestockOrder
-DataLayer -- SKU
-DataLayer -- SkuItem
-DataLayer -- TestDescriptor
+DataImpl ..|> DataLayer : <<implements>>
+
+DataImpl -- InternalOrder
+DataImpl -- RestockOrder
+DataImpl -- SKU
+DataImpl -- SkuItem
+DataImpl -- TestDescriptor
 
 
 
