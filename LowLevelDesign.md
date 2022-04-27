@@ -36,6 +36,9 @@ class SkuItem {
     -dateOfStock: Date
 
     +getSku(): SKU
+    +getAvailable(): Boolean
+
+    +setAvailable(available: Boolean): void
 }
 
 class Position {
@@ -96,8 +99,8 @@ class TestDescriptor{
     +getId(): Integer
     +getIdTestDescriptor(): Integer
     +getSKUId(): Integer
-
     +getProcedure(): String
+    
     +setProcedure(procedureDescription: String): void
 }
 
@@ -147,20 +150,34 @@ class RestockOrder{
     +getProductList() : List<ProductRestockOrder>
     +getSkuItemList(): List<RFID>
     +getSupplier():Supplier
-    +setState(NewState:String): void
+
 }
 
 class ProductRestockOrder{
     -price : double
+
+    +getPrice(): double
+    +setPrice(price: double): void
 }
 class ProductInternalOrder{
     -RFID : String
+
+    +getRFID(): String
+    +setRFID(RFID: String): void
 }
 
 class ProductOrder{
     -SKUId: Integer
     -description : String
     -quantity : Integer
+
+    +getSKUId(): Integer
+    +getQuantity(): Integer
+    +getDescription(): String
+
+    +setSKUId(SKUId: Integer)
+    +setQuantity(quantity: Integer): void
+    +setDescription(description: String): void
 }
 
 class ReturnOrder{
@@ -168,6 +185,15 @@ class ReturnOrder{
     -returnDate : Date
     -productsOrderList : List<ProductOrder>
     -RestockOrderId : Integer
+    
+    +getReturnOrderId(): Integer
+    +getReturnDate(): Date
+    +getProductsOrderList(): List<ProductOrder>
+    +getRestockOrderId(): Integer
+
+    +setReturnOrderId(ReturnOrderId : Integer): void
+    +setReturnDate(returnDate : Date): void
+    +setRestockOrderId(RestockOrderId : Integer): void
 }
 
 class InternalOrder{
@@ -178,7 +204,7 @@ class InternalOrder{
 
     +getId(): Integer
     +getIssueDate(): Date
-    +getProductOrderList() : List<ProductOrder>
+    +getProductList() : List<ProductInternalOrder>
     +getCostumerId() : Integer
     +setState(NewState:String): void
 }
@@ -189,6 +215,7 @@ class Customer{
     -customerSurname : String
 
     +getCustomerId(): Integer
+
 }
 
 class DataLayer{
