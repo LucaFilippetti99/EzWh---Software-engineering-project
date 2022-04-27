@@ -157,7 +157,7 @@ class ProductInternalOrder{
 }
 
 class ProductOrder{
-    -SkuId: Integer
+    -SKUId: Integer
     -description : String
     -quantity : Integer
 }
@@ -255,14 +255,14 @@ class DataLayer{
     +listSkuRestockOrder(restockOrderId: Integer): List<SKU>
     +issueRestockOrder(RestockOrderID: Integer): void
     --
-    +newProductRestockOrder(SkuId: Integer, price: double, description : String, quantity : Integer): ProductRestockOrder 
+    +newProductRestockOrder(SKUId: Integer, price: double, description : String, quantity : Integer): ProductRestockOrder 
     --
-    +newProductInternalOrder(SkuId: Integer, RFID : String, description : String, quantity : Integer): ProductInternalOrder 
+    +newProductInternalOrder(SKUId: Integer, RFID : String, description : String, quantity : Integer): ProductInternalOrder 
     --
     +newReturnOrder(returnDate : Date, restockOrderId: Integer): ReturnOrder
     +deleteReturnOrder(returnOrderId: Integer): void 
 
-    +addSkuToReturnOrder(skuItemList: HashMap<SKU, Integer>) : ReturnOrder 
+    +addSkuToReturnOrder(skuItemList: HashMap<SKUId, RFID>) : ReturnOrder 
     +startReturnOrder(SKUId: Integer, quantity: Integer, SupplierId: Integer): restockOrder
     +getAllReturnOrders(): List<ReturnOrder>
     +getReturnOrder(returnOrderId: Integer): ReturnOrder
