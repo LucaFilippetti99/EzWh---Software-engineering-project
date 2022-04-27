@@ -144,7 +144,7 @@ class RestockOrder{
     +getTrasportNote(): String
     +getState() : String
     +getProductList() : List<ProductRestockOrder>
-    +getSkuItemList(): Hashmap<SKUId, RFID>
+    +getSkuItemList(): List<RFID>
     +getSupplier():Supplier
     +setState(NewState:String): void
 }
@@ -248,7 +248,7 @@ class DataLayer{
     +getAllRestockOrders(): List<RestockOrder>
     +getRestockOrder(RestockOrderId: Integer): RestockOrder
     +getIssuedRestockOrders(): List<RestockOrder>
-    +modifyStateRestockOrder(RestockOrderId : Integer, State : String) : RestockOrder
+    +modifyStateRestockOrder(RestockOrderId : Integer, state : String) : RestockOrder
     +addSkuItemToRestockOrder(RestockOrderId: Integer, skuItemList: HashMap<SKUId, RFID >) : RestockOrder
     +deleteSkuFromOrder(RestockOrderId: Integer, productToDelete : ProductRestockOrder ): void
     +addTrasportNote(RestockOrderId: Integer, note: String): RestockOrder
