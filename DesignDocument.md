@@ -212,6 +212,29 @@ end
 
 ```plantuml
 
+actor Clerk
+note over EzWH : EzWH includes GUI and DataLayer
+Clerk -> EzWH : Select List<RFID> 
+activate EzWH
+
+EzWH -> DataLayer : stockSkuItem(Position)
+activate DataLayer
+
+DataLayer -> SkuItem : updateSkuItemPosition(PositionId)
+activate SkuItem
+deactivate SkuItem
+
+DataLayer -> Sku : updateSkuAvailability(PositionId)
+activate Sku
+deactivate Sku
+
+
+Position -> Position :   setOccupiedWeight(Weight W)
+Position -> Position :    setOccupiedVolume(Volume V)
+
+DataLayer -> RestockOrder :  modifyStateRestockOrder(restockOrderId I, Completed) 
+activate RestockOrder
+deactivate RestockOrder
 
 
 ```

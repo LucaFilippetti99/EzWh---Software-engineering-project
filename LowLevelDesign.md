@@ -3,14 +3,12 @@
 ```plantuml
 @startuml
 
-/'CONTROLLARE SINTASSI '/
-
 class SKU {
     -id: Integer
     -description: String
     -weight: double
     -volume: double
-    -price: float
+    -price: double
     -notes: String
     -availableQuantity: Integer 
 
@@ -35,6 +33,8 @@ class SkuItem {
     -RFID: String
     -available: Boolean
     -dateOfStock: Date
+
+    +getSku(): SKU
 }
 
 class Position {
@@ -97,23 +97,21 @@ class TestDescriptor{
     +getSKUId(): Integer
 
     +getProcedure(): String
-    +setProcedure(id: Integer, procedureDescription: String): void
+    +setProcedure(procedureDescription: String): void
 }
 
 class TestResult{
     -id : Integer
-    -idTestDescriptor : Integer
+    -TestDescriptorId : Integer
     -RFID: String
-    -Date : Date
-    -Result: Boolean
+    -date : Date
+    -result: Boolean
 
     +getId(): Integer
     +getRFID(): String
     +getResult(): Boolean
-    +getIdTestDescriptor(): Integer
+    +getTestDescriptorId(): Integer
     +getDate(): String
-
-    +updateTestResult(id: Integer, idTestDescriptor: Integer, Date: Date, Result: Boolean): void
 }
 class Item {
     -id: Integer
@@ -128,53 +126,53 @@ class Item {
     +getSKUId(): Integer
     +getSupplierId(): Integer
 
-    +setDescription(id: Integer, description: String): void
-    +setPrice(id: Integer, price: double): void
+    +setDescription(description: String): void
+    +setPrice(price: double): void
 }
 
 class RestockOrder{
     -RestockOrderID : Integer
-    -IssueDate: Date
-    -State : String
-    -TrasportNote: String
-    -ProductList : List<ProductRestockOrder>
-    -SkuItemList : Hashmap<SkuId, String> 
-    -Supplier : SupplierId
+    -issueDate: Date
+    -state : String
+    -trasportNote: String
+    -productList : List<ProductRestockOrder>
+    -skuItemList : Hashmap<SKUId, RFID> 
+    -SupplierId : Integer
 
     +getId(): Integer
     +getIssueDate(): Date
     +getTrasportNote(): String
     +getState() : String
     +getProductList() : List<ProductRestockOrder>
-    +getSkuItemList(): Hashmap<SkuId, String>
+    +getSkuItemList(): List<RFID>
     +getSupplier():Supplier
     +setState(NewState:String): void
 }
 
 class ProductRestockOrder{
-    -price : float
+    -price : double
 }
 class ProductInternalOrder{
     -RFID : String
 }
 
 class ProductOrder{
-    -SkuId: Integer
-    -Description : String
-    -Quantity : Integer
+    -SKUId: Integer
+    -description : String
+    -quantity : Integer
 }
 
 class ReturnOrder{
     -ReturnOrderId : Integer
-    -ReturnDate : Date
+    -returnDate : Date
     -productsOrderList : List<ProductOrder>
     -RestockOrderId : Integer
 }
 
 class InternalOrder{
     -InternalOrderId : Integer
-    -IssueDate: Date
-    -ProductOrderList: List<ProductOrder>
+    -issueDate: Date
+    -productOrderList: List<ProductOrder>
     -CostumerId : Integer
 
     +getId(): Integer
@@ -186,15 +184,15 @@ class InternalOrder{
 
 class Customer{
     -CustomerId : Integer
-    -CustomerName : String
-    -CustomerSurname : String
+    -customerName : String
+    -customerSurname : String
 
     +getCustomerId(): Integer
 }
 
 class DataLayer{
-    +newSKU(description: String, weight: double, volume: double, price: float, notes: String): SKU
-    +updateSKU(id:Integer, description: String, weight: double, volume: double, price: float, notes: String): SKU
+    +newSKU(description: String, weight: double, volume: double, price: double, notes: String): SKU
+    +updateSKU(id:Integer, description: String, weight: double, volume: double, price: double, notes: String): SKU
     +deleteSKU(id: Integer): void
 
     +getAllSKU(): List<SKU>
@@ -228,7 +226,8 @@ class DataLayer{
     +getTestDescriptors(): List<TestDescriptor>
     +getSpecificTD(id: Integer): TestDescriptor
     --
-    +newTestResult(RFID: Integer, idTestDescriptor: Integer, Date: Date, Result: Boolean ): TestResult
+    +newTestResult(RFID: Integer, TestDescriptorId: Integer, date: Date, result: Boolean ): TestResult
+    +modifyTestResult(id: Integer, TestDescriptorId: Integer, date: Date, result: Boolean): void
     +deleteTestResult(id: Integer): void
 
     +getTestResults(): List<TestResult>
@@ -247,34 +246,34 @@ class DataLayer{
     +deleteRestockOrder(restockOrderId: Integer): void 
 
     +getAllRestockOrders(): List<RestockOrder>
-    +getRestockOrder(restockOrderId: Integer): RestockOrder
+    +getRestockOrder(RestockOrderId: Integer): RestockOrder
     +getIssuedRestockOrders(): List<RestockOrder>
-    +modifyStateRestockOrder(restockOrderId : Integer, State : String) : RestockOrder
-    +addSkuItemToRestockOrder(restockOrderId: Integer, skuItemList: HashMap<SKU, Integer >) : RestockOrder
-    +deleteSkuFromOrder(restockOrderId: Integer, productToDelete : ProductRestockOrder ): void
-    +addTrasportNote(restockOrderId: Integer, note: String): RestockOrder
+    +modifyStateRestockOrder(RestockOrderId : Integer, state : String) : RestockOrder
+    +addSkuItemToRestockOrder(RestockOrderId: Integer, skuItemList: HashMap<SKUId, RFID >) : RestockOrder
+    +deleteSkuFromOrder(RestockOrderId: Integer, productToDelete : ProductRestockOrder ): void
+    +addTrasportNote(RestockOrderId: Integer, note: String): RestockOrder
     +listSkuRestockOrder(restockOrderId: Integer): List<SKU>
     +issueRestockOrder(RestockOrderID: Integer): void
     --
-    +newProductRestockOrder(SkuId: Integer, price: float, Description : String, Quantity : Integer): ProductRestockOrder 
+    +newProductRestockOrder(SKUId: Integer, price: double, description : String, quantity : Integer): ProductRestockOrder 
     --
-    +newProductInternalOrder(SkuId: Integer, RFID : String, Description : String, Quantity : Integer): ProductInternalOrder 
+    +newProductInternalOrder(SKUId: Integer, RFID : String, description : String, quantity : Integer): ProductInternalOrder 
     --
     +newReturnOrder(returnDate : Date, restockOrderId: Integer): ReturnOrder
     +deleteReturnOrder(returnOrderId: Integer): void 
 
-    +addSkuToReturnOrder(skuItemList: HashMap<SKU, Integer>) : ReturnOrder 
-    +startReturnOrder(Sku, Quantity, SupplierId): restockOrder
+    +addSkuToReturnOrder(skuItemList: HashMap<SKUId, RFID>) : ReturnOrder 
+    +startReturnOrder(SKUId: Integer, quantity: Integer, SupplierId: Integer): restockOrder
     +getAllReturnOrders(): List<ReturnOrder>
     +getReturnOrder(returnOrderId: Integer): ReturnOrder
     --
-    +newCustomer(customerId: Integer, customerName : String, customerSurname : String) : Customer
-    +deleteCustomer (customerId : Integer) : void
+    +newCustomer(CustomerId: Integer, customerName : String, customerSurname : String) : Customer
+    +deleteCustomer (CustomerId : Integer) : void
 
-    +getCustomerById(customerId: Integer) : Customer
+    +getCustomerById(CustomerId: Integer) : Customer
     +getAllCustomer(): List<Customer>
     --
-    +newInternalOrder(issueDate : Date, customerId: Integer, productOrderList : List<ProductOrder>): InternalOrder
+    +newInternalOrder(issueDate : Date, CustomerId: Integer, productOrderList : List<ProductOrder>): InternalOrder
     +deleteInternalOrder(internalOrderId: Integer) : void
 
     +deleteSkuInternalOrder(internalOrderId: Integer, SkuProduct: SKU) : InternalOrder 
@@ -299,6 +298,8 @@ Item <-- User :Supplier
 
 ReturnOrder <-- ProductOrder
 ReturnOrder --> SkuItem
+ReturnOrder -- RestockOrder
+
 InternalOrder -- ProductOrder
 
 User --> RestockOrder :Supplier
