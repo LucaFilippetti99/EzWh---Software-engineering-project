@@ -218,10 +218,14 @@ note over EzWH : EzWH includes GUI and DataLayer
 Clerk -> EzWH : Select List<RFID> 
 activate EzWH
 
+loop foreach RFID
+
 EzWH -> DataLayer : getSkuItemByRFID(RFID)
 activate DataLayer
 return  SkuItem
 
+EzWH -> DataLayer : Skuitem
+activate DataLayer
 DataLayer -> Sku : getSku()
 activate Sku
 return  Sku
@@ -230,9 +234,13 @@ DataLayer -> Sku : setPosition()
 activate Sku
 deactivate Sku
 
+end
+
 DataLayer -> Sku : setAvailableQuantity(AvailableQuantity)
 activate Sku
 deactivate Sku
+
+
 
 DataLayer -> Position : setOccupiedWeight(Weight W)
 activate Position
@@ -244,7 +252,6 @@ deactivate Position
   
 
 EzWH -> DataLayer :  modifyStateRestockOrder(restockOrderId I, Completed) 
-activate DataLayer
 deactivate DataLayer
 
 
