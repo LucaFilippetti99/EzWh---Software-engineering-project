@@ -336,6 +336,7 @@ class DataLayer{
     +getIssuedInternalOrders(): List<InternalOrder>
     +getAcceptedInternalOrders(): List<InternalOrder>
     +getInternalOrder(internalOrderId: Integer): InternalOrder
+    +modifyStateInternalOrder(InternalOrderId : Integer, state : String) : InternalOrder
     +replyToInternalOrder(internalOrderId: Integer, reply: String) : InternalOrder 
     +addSkuToInternalOrder(productToOrder : ProductOrder): InternalOrder 
 }
