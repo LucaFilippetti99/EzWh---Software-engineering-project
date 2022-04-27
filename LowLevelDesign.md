@@ -21,13 +21,13 @@ class SKU {
     +getPosition(): Position
     +getAvailableQuantity(): Integer
 
-    +setId(Integer): void
-    +setDescription(String): void
-    +setWeight(double): void
-    +setPrice(double): void
-    +setNotes(String): void
+    +setId(id: Integer): void
+    +setDescription(description: String): void
+    +setWeight(weight: double): void
+    +setPrice(price: double): void
+    +setNotes(notes: String): void
     +setPosition(pos: String): void
-    +setAvailableQuantity(): void
+    +setAvailableQuantity(availableQuantity: Integer): void
 }
 
 class SkuItem {
