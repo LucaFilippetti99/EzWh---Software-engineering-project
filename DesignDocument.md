@@ -257,6 +257,9 @@ activate Position
 return
 deactivate Position
   
+EzWH -> RestockOrder : getId()
+activate RestockOrder
+return restockOrderId : Integer
 
 EzWH -> DataLayer :  modifyStateRestockOrder(restockOrderId I, Completed)
 return 
