@@ -137,6 +137,8 @@ loop foreach SkuId
   activate ProductRestockOrder
   return ProductRestockOrder
 
+  DataLayer -> DataLayer : productList.push(ProductRestockOrder)
+
   end
 
 Manager -> EzWH : Supplier
@@ -155,12 +157,6 @@ activate RestockOrder
 return Done
 
 return
-
-
-
-
-
-
 ```
 
 ## Scenario 5-2-3 
@@ -168,8 +164,48 @@ return
 
 ```plantuml
 
-  
+actor QualityEmployee
 
+QualityEmployee -> EzWH : RestockOrder
+activate EzWH
+
+EzWH -> RestockOrder : getSkuItemList()
+activate RestockOrder
+return List<rfid>
+
+loop foreach rfid
+
+EzWH -> DataLayer : getSkuItemByRFID(rfid)
+activate DataLayer
+return SkuItem
+
+EzWH -> DataLayer : SkuItem
+activate DataLayer
+
+DataLayer -> SkuItem : getSKU()
+activate SkuItem
+return SKU
+
+DataLayer -> SKU : getTestDescriptors()
+activate SKU
+return List<TestDescriptor>
+
+return SKU, List<TestDescriptor>
+
+loop foreach TestDescriptor
+
+EzWH -> TestDescriptor : getId()
+activate TestDescriptor
+return idTestDescriptor: Integer
+
+
+EzWH -> DataLayer : newTestResult(rfid, idTestDescriptor, date, result )
+activate DataLayer
+return TestResult
+
+end
+
+end
 ```
 
 ## Scenario 5-3-1 
