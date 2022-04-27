@@ -36,7 +36,8 @@ The design must satisfy the Official Requirements document
 
 # High level design 
 
-<TODO discuss architectural styles used, if any>
+EzWarehouse is based on a layered architecture with one single thread. It is composed by two main packages, relatives to Gui and to Data. Gui is linked to Data with a link from the one to the second. Data contains classes regarding information and model needed to be shown in the Gui. Gui package is used to draw the graphic element and interact with it.
+
 
 ```plantuml
     package "it.polito.ezwh"{
@@ -274,6 +275,30 @@ deactivate DataLayer
 
 ```plantuml
 
+actor Manager
+Manager -> EzWh : Restock order id
+activate EzWh
+    EzWh -> DataLayer : RestockOrderID : integer
+    Activate DataLayer
+        DataLayer -> DataLayer : getRestockOrder(RestockOrderID)
+            DataLayer -> ReturnOrder : newReturnOrder(returnDate, restockOrderId)
+            Activate ReturnOrder
+            ReturnOrder --> DataLayer : ReturnOrder
+        Deactivate ReturnOrder
+        DataLayer -> DataLayer : GetSkuItemList()
+        DataLayer -> DataLayer : getTestResult(RFID)
+        DataLayer --> EzWh : List<String> (SKU items)
+        EzWh --> Manager : List of SKU items that failed quality test
+        Manager -> EzWh : List of SKU items to return
+        EzWh -> DataLayer : List<String> (SKU items)
+        Activate ReturnOrder
+            DataLayer -> ReturnOrder : addSkuToReturnOrder(skuItemList)
+            ReturnOrder --> DataLayer : ReturnOrder
+        Deactivate ReturnOrder
+        DataLayer --> EzWh
+        EzWh --> Manager
+        Manager -> EzWh : Confirmation
+        EzWh -> Data
 
 
 ```

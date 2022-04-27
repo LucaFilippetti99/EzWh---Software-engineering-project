@@ -245,7 +245,7 @@ class Customer{
 
 }
 
-class DataLayer{
+interface DataInterface{
     +newSKU(description: String, weight: double, volume: double, price: double, notes: String): SKU
     +updateSKU(id:Integer, description: String, weight: double, volume: double, price: double, notes: String): SKU
     +deleteSKU(id: Integer): void
@@ -384,15 +384,15 @@ TestDescriptor -- SKU
 Position -- SKU
 Position -- SkuItem
  
-User -- DataImpl
+User -- DataLayer
 
-DataImpl ..|> DataLayer : <<implements>>
+DataLayer ..|> DataInterface : <<implements>>
 
-DataImpl -- InternalOrder
-DataImpl -- RestockOrder
-DataImpl -- SKU
-DataImpl -- SkuItem
-DataImpl -- TestDescriptor
+DataLayer -- InternalOrder
+DataLayer -- RestockOrder
+DataLayer -- SKU
+DataLayer -- SkuItem
+DataLayer -- TestDescriptor
 
 
 @enduml
