@@ -197,8 +197,9 @@ EZWH (EaSy WareHouse) is a software application to support the management of a w
 # Use case diagram and use cases
 
 ## Use case diagram
-![Getting Started](./media/diagrams/UseCaseDiagram.jpg)
+![Use Case Diagram](./media/diagrams/UseCaseDiagram.jpg)
 
+##### Scenario 1.1
 
 ## Use case 1, UC1 - Manage users and rights
 
