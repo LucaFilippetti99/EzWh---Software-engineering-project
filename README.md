@@ -49,6 +49,6 @@ git clone [https://github.com/](https://github.com/)<your-username>/ez-warehouse
 cd ez-warehouse
 ```
 
-* Review code/ for build and run instructions.
-* API available after setup – see API.md for endpoints.
-* Test cases and validation are covered in the design and requirements documents.
+- Review code/ for build and run instructions.
+- API available after setup – see API.md for endpoints.
+- Test cases and validation are covered in the design and requirements documents.
