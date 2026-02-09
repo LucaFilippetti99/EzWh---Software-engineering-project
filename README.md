@@ -1,8 +1,8 @@
 # EZ Warehouse
 
-**Course:** Software Engineering 
-**Institution:** Politecnico di Torino  
-**Academic Year:** 2021/2022  
+**Course:** Software Engineering.  
+**Institution:** Politecnico di Torino.  
+**Academic Year:** 2021/2022.
 
 EZ Warehouse is a warehouse management system supporting product catalog, inventory tracking, inbound/outbound orders, shipment status, and multi-role user management.
 
